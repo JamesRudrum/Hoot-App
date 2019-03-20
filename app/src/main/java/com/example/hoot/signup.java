@@ -58,10 +58,10 @@ public class signup extends AppCompatActivity {
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
                                 }
-                        })
-            }
+
+            };
         });
-            }
+            };
 
 
         });
