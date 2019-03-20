@@ -2,20 +2,27 @@ package com.example.hoot;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button BTNsignuplink;
     private Button BTNsignin;
     private EditText ETLoginEmail;
-    private EditText ETloginpassword;
+    private EditText ETLoginPassword;
+    private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -40,12 +47,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, signup.class));
             }
         });
-        };
 
-        BTNsignin = findViewById(R.id.BTNsignup);
-        ETLoginEmail = findViewById(R.id.ETLoginEmail)
-        ETloginpassword  = findViewById(R.id.ETloginpassword)
 
-        BTNsignin.setOnClickListener()
-    }
+        BTNsignin = findViewById(R.id.BTNsignin);
+        ETLoginEmail = findViewById(R.id.ETLoginEmail);
+        ETLoginPassword = findViewById(R.id.ETLoginPassword);
 
+        BTNsignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth =  FirebaseAuth.getInstance();
+                mAuth.signInWithEmailAndPassword(ETLoginEmail.getText().toString(), ETLoginPassword.getText().toString())
+                    .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
+                            } else    {
+                                Toast.makeText(MainActivity.this, "Login UnSuccessful", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+            }
+        });
+
+    };
+        }

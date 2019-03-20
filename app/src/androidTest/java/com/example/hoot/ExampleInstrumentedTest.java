@@ -53,4 +53,10 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.ETpassword)).perform(typeText("password123"));
         onView(withId(R.id.BTNsignup)).perform(click());
     }
+    @Test
+    public void userCanLogin() {
+        onView(withId(R.id.ETLoginEmail)).perform(typeText("abc@abc.com"));
+        onView(withId(R.id.ETLoginPassword)).perform(typeText("123456"));
+        onView(withId(R.id.BTNsignin)).perform(click());
+    }
 }
