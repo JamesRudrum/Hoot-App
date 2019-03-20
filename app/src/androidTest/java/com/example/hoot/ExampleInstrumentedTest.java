@@ -9,8 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 
 /**
@@ -37,8 +40,17 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void userCanEnterFirstName() {
-        onView(withId(R.id.firstName)).perform(typeText("Erin"));
-        onView(withId(R.id.email)).perform(typeText("erin@google.com"));
+    public void userCanPressSignUpLink() {
+        onView(withId(R.id.BTNsignuplink)).perform(click());
+        onView(withId(R.id.signup)).check(matches(withText("Sign Up")));
+    }
+
+    @Test
+    public void userSubmitSignUpDetails() {
+        onView(withId(R.id.BTNsignuplink)).perform(click());
+        onView(withId(R.id.ETfirstname)).perform(typeText("James"));
+        onView(withId(R.id.ETemail)).perform(typeText("james@google.com"));
+        onView(withId(R.id.ETpassword)).perform(typeText("password123"));
+        onView(withId(R.id.BTNsignup)).perform(click());
     }
 }

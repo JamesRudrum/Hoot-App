@@ -5,4 +5,5 @@
     <string name="sign_up">Sign Up</string>
     <string name="first_name">First Name</string>
     <string name="email">email</string>
+    <string name="title_activity_signup">signup</string>
 </resources>
