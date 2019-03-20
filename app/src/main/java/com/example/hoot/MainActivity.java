@@ -8,10 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button BTNsignuplink;
+    private Button BTNsignin;
+    private EditText ETLoginEmail;
+    private EditText ETloginpassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +41,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         };
+
+        BTNsignin = findViewById(R.id.BTNsignup);
+        ETLoginEmail = findViewById(R.id.ETLoginEmail)
+        ETloginpassword  = findViewById(R.id.ETloginpassword)
+
+        BTNsignin.setOnClickListener()
     }
 
