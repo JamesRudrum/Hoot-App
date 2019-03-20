@@ -39,6 +39,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void userCanEnterFirstName() {
         onView(withId(R.id.firstName)).perform(typeText("Erin"));
-        onView(withId(R.id.email)).perform(typeText("erin@google.com"));
+        onView(withId(R.id.ETemail)).perform(typeText("erin@google.com"));
     }
 }
