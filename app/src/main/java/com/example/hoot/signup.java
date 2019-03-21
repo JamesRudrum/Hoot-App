@@ -9,12 +9,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
 
@@ -23,6 +27,9 @@ public class signup extends AppCompatActivity {
     private EditText ETfirstname;
     private EditText ETpassword;
     private FirebaseAuth mAuth;
+    private Switch SWaccounttype;
+    private EditText ETaboutme;
+
 
 
 
@@ -41,8 +48,12 @@ public class signup extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 
         BTNsignup = findViewById(R.id.BTNsignup);
+        ETfirstname = findViewById( R.id.ETfirstname);
         ETemail = findViewById(R.id.ETemail);
         ETpassword = findViewById(R.id.ETpassword);
+        ETaboutme = findViewById(R.id.ETaboutme);
+        SWaccounttype = findViewById(R.id.SWaccounttype);
+
 
         BTNsignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +66,12 @@ public class signup extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(signup.this, "Successful", Toast.LENGTH_SHORT).show();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String userid = user.getUid();
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
+                                    myRef.child("name").setValue(ETfirstname.getText().toString());
+                                    myRef.child("aboutme").setValue(ETaboutme.getText().toString());
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
                                 }
