@@ -1,18 +1,14 @@
 package com.example.hoot;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -41,8 +37,7 @@ public class signup extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Switch SWaccounttype;
     private EditText ETaboutme;
-    private Button BTNchoose;
-    private Button BTNupload;
+    private Button BTNchooseImageSignUp;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
     private FirebaseStorage storage;
@@ -71,13 +66,12 @@ public class signup extends AppCompatActivity {
         ETpassword = findViewById(R.id.ETpassword);
         ETaboutme = findViewById(R.id.ETaboutme);
         SWaccounttype = findViewById(R.id.SWaccounttype);
-        BTNchoose = findViewById(R.id.BTNchoose);
-        BTNupload = findViewById(R.id.BTNupload);
+        BTNchooseImageSignUp = findViewById(R.id.BTNchooseImageSignUp);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
 
-        BTNchoose.setOnClickListener( new View.OnClickListener() {
+        BTNchooseImageSignUp.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
@@ -101,7 +95,7 @@ public class signup extends AppCompatActivity {
                                     DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
-                                    uploadImage();
+                                    uploadImage(userid);
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
                                 }
@@ -130,11 +124,11 @@ public class signup extends AppCompatActivity {
         }
     }
 
-    private void uploadImage() {
+    private void uploadImage(String userid) {
 
         if(filePath != null)
         {
-            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString()).child(userid);
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -145,7 +139,7 @@ public class signup extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signup.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
