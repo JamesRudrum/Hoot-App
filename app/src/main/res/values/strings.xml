@@ -11,4 +11,8 @@
     <string name="wise">Wise</string>
     <string name="account_type">Account type</string>
     <string name="first_name">First Name</string>
+    <string name="title_activity_feed">FeedActivity</string>
+    <string name="feed">Feed</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="profile_title">Profile</string>
 </resources>
