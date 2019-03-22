@@ -39,15 +39,23 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child("young").child(user.getUid());
+        databaseReference = FirebaseDatabase.getInstance().getReference("users"));
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("name").getValue(String.class);
-                String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
-                TVprofilePageName.setText(name);
-                TVprofileWiseOrYoung.setText("Young");
-                TVAboutMeProfile.setText(aboutMe);
+                if (dataSnapshot.child("young").child(user.getUid()).exists()) {
+                    String name = dataSnapshot.child("name").getValue(String.class);
+                    String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
+                    TVprofilePageName.setText(name);
+                    TVprofileWiseOrYoung.setText("Young");
+                    TVAboutMeProfile.setText(aboutMe);
+                } else if (dataSnapshot.child("wise").child(user.getUid())) {
+                    String name = dataSnapshot.child("name").getValue(String.class);
+                    String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
+                    TVprofilePageName.setText(name);
+                    TVprofileWiseOrYoung.setText("Wise");
+                    TVAboutMeProfile.setText(aboutMe);
+                }
 
             }
 
