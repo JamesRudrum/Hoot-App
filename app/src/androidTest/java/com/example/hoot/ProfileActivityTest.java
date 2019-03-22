@@ -36,7 +36,7 @@ public class ProfileActivityTest {
             new IntentsTestRule<>(signup.class);
 
     @Test
-    public void youngUserSubmitSignUpDetails() {
+    public void youngUserSubmitSignUpDetailsAndViewProfile() {
         onView(withId(R.id.ETfirstname)).perform(typeText("Brooke"));
         onView(withId(R.id.ETemail)).perform(typeText("queenbrooke@test.com"));
         onView(withId(R.id.ETpassword)).perform(typeText("password123"));
@@ -56,4 +56,25 @@ public class ProfileActivityTest {
         user.delete();
     }
 
+    @Test
+    public void wiseUserSubmitSignUpDetailsAndViewProfile() {
+        onView(withId(R.id.ETfirstname)).perform(typeText("Erin"));
+        onView(withId(R.id.ETemail)).perform(typeText("queenerin@test.com"));
+        onView(withId(R.id.ETpassword)).perform(typeText("password123"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.ETaboutme)).perform(typeText("I am also the queen of everything"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SWaccounttype)).perform(click());
+        Intent resultData = new Intent();
+        intending(allOf(hasAction(equalTo(resultData.ACTION_GET_CONTENT)),
+                hasType(is("image/*"))));
+        onView(withId(R.id.BTNsignup)).perform(click());
+        SystemClock.sleep(5000);
+        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Erin"))));
+        onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Wise"))));
+        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("I am also the queen of everything"))));
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        user.delete();
+    }
 }
