@@ -1,9 +1,9 @@
 package com.example.hoot;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,12 +13,20 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.UUID;
 
 public class signup extends AppCompatActivity {
 
@@ -29,8 +37,11 @@ public class signup extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Switch SWaccounttype;
     private EditText ETaboutme;
-
-
+    private Button BTNchooseImageSignUp;
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 71;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
 
     @Override
@@ -53,7 +64,17 @@ public class signup extends AppCompatActivity {
         ETpassword = findViewById(R.id.ETpassword);
         ETaboutme = findViewById(R.id.ETaboutme);
         SWaccounttype = findViewById(R.id.SWaccounttype);
+        BTNchooseImageSignUp = findViewById(R.id.BTNchooseImageSignUp);
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
+
+        BTNchooseImageSignUp.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+            }
+        });
 
         BTNsignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +93,10 @@ public class signup extends AppCompatActivity {
                                     DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
+                                    startActivity(new Intent(signup.this, ProfileActivity.class));
+
+                                    uploadImage(userid);
+
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
                                 }
@@ -82,6 +107,50 @@ public class signup extends AppCompatActivity {
 
 
         });
+    }
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            filePath = data.getData();
+        }
+    }
+
+    private void uploadImage(String userid) {
+
+        if(filePath != null)
+        {
+            StorageReference ref = storageReference.child("images").child(userid);
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            Toast.makeText(signup.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(signup.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                        }
+                    });
+        }
     }
 
 }
