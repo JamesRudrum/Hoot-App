@@ -94,6 +94,7 @@ public class signup extends AppCompatActivity {
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
                                     uploadImage(userid);
+                                    myRef.child("URI").setValue(filePath);
                                     startActivity(new Intent(signup.this, ProfileActivity.class));
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
