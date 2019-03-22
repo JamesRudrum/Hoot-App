@@ -39,19 +39,20 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("users"));
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseUser user = mAuth.getCurrentUser();
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("young").child(user.getUid()).exists()) {
-                    String name = dataSnapshot.child("name").getValue(String.class);
-                    String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
+                    String name = dataSnapshot.child("young").child(user.getUid()).child("name").getValue(String.class);
+                    String aboutMe = dataSnapshot.child("young").child(user.getUid()).child("aboutme").getValue(String.class);
                     TVprofilePageName.setText(name);
                     TVprofileWiseOrYoung.setText("Young");
                     TVAboutMeProfile.setText(aboutMe);
-                } else if (dataSnapshot.child("wise").child(user.getUid())) {
-                    String name = dataSnapshot.child("name").getValue(String.class);
-                    String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
+                } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
+                    String name = dataSnapshot.child("wise").child(user.getUid()).child("name").getValue(String.class);
+                    String aboutMe = dataSnapshot.child("wise").child(user.getUid()).child("aboutme").getValue(String.class);
                     TVprofilePageName.setText(name);
                     TVprofileWiseOrYoung.setText("Wise");
                     TVAboutMeProfile.setText(aboutMe);
