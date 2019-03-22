@@ -38,19 +38,23 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-//        if
-//        databaseReference = FirebaseDatabase.getInstance().getReference("users");
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child("young").child(user.getUid());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("name").getValue(String.class);
+                TVprofilePageName.setText(name);
+                TVprofileWiseOrYoung.setText("Young");
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         IVprofilePagePicture = findViewById(R.id.IVprofilePagePicture);
         TVprofileWiseOrYoung = findViewById(R.id.TVprofileWiseOrYoung);

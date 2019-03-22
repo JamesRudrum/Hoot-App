@@ -1,5 +1,6 @@
 package com.example.hoot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -72,6 +73,7 @@ public class signup extends AppCompatActivity {
                                     DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
+                                    startActivity(new Intent(signup.this, ProfileActivity.class));
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
                                 }

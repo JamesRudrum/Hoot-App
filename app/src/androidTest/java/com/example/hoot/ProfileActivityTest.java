@@ -48,7 +48,7 @@ public class ProfileActivityTest {
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Brooke")));
+        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Brooke"))));
         onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Young"))));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
