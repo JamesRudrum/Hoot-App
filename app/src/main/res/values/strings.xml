@@ -13,4 +13,6 @@
     <string name="first_name">First Name</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="about_me">About Me</string>
+    <string name="title_activity_feed">FeedActivity</string>
+    <string name="feed">Feed</string>
 </resources>
