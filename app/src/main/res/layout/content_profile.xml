@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_profile">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/IVprofilePagePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,12 +33,12 @@
         app:layout_constraintBottom_toTopOf="@+id/TVaboutMeTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toEndOf="@+id/TWprofileWiseOrYoung"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/TVprofileWiseOrYoung"
+        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture"
         app:layout_constraintVertical_bias="0.761" />
 
     <TextView
-        android:id="@+id/TWprofileWiseOrYoung"
+        android:id="@+id/TVprofileWiseOrYoung"
         android:layout_width="89dp"
         android:layout_height="36dp"
         android:layout_marginStart="68dp"
@@ -46,7 +46,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/TVaboutMeTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture"
         app:layout_constraintVertical_bias="0.764" />
 
     <TextView
