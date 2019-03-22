@@ -50,6 +50,7 @@ public class ProfileActivityTest {
         SystemClock.sleep(5000);
         onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Brooke"))));
         onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Young"))));
+        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("I am the queen of everything"))));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();

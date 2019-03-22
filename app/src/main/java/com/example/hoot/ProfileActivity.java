@@ -44,8 +44,10 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.child("name").getValue(String.class);
+                String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
                 TVprofilePageName.setText(name);
                 TVprofileWiseOrYoung.setText("Young");
+                TVAboutMeProfile.setText(aboutMe);
 
             }
 
