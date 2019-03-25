@@ -24,7 +24,7 @@ public class FeedActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setTitle("Feed");
+//        actionBar.setTitle("Feed");
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
