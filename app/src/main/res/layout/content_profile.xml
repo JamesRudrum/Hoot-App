@@ -8,78 +8,86 @@
     tools:context=".ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarProfilePage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
     <ImageView
         android:id="@+id/IVprofilePagePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="avatar"
+        android:layout_marginTop="32dp"
+        android:contentDescription="profileAvatarProfilePage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarProfilePage"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/TVprofilePageName"
-        android:layout_width="91dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/TVaboutMeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toEndOf="@+id/TVprofileWiseOrYoung"
-        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture" />
 
     <TextView
         android:id="@+id/TVprofileWiseOrYoung"
-        android:layout_width="89dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/TVaboutMeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture" />
 
     <TextView
         android:id="@+id/TVaboutMeTitle"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/about_me"
-        app:layout_constraintBottom_toTopOf="@+id/TVAboutMeProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVprofileWiseOrYoung" />
 
     <TextView
         android:id="@+id/TVAboutMeProfile"
-        android:layout_width="260dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="164dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent" />
-<!--=======-->
-    <!--<TextView-->
-        <!--android:id="@+id/profileTitle"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/profile_title"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-<!--&gt;>>>>>> Dev-->
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVaboutMeTitle" />
+
+    <EditText
+        android:id="@+id/ETinteretsListProfilePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TVAboutMeProfile" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABchatButtonRCPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/sym_action_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ETinteretsListProfilePage" />
+
 </android.support.constraint.ConstraintLayout>
