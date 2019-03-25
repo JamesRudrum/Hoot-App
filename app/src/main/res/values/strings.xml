@@ -20,4 +20,6 @@
     <string name="to_do">To do</string>
     <string name="view_profile">View profile</string>
     <string name="title_activity_requestcontactpage">requestcontactpage</string>
+    <string name="textview">TextView</string>
+    <string name="profileavatarrcpage">ProfileAvatarRCPage</string>
 </resources>
