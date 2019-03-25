@@ -6,6 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RequestContactPageActivity extends AppCompatActivity {
 
@@ -16,6 +20,7 @@ public class RequestContactPageActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -24,6 +29,12 @@ public class RequestContactPageActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        if (getIntent().hasExtra("userid")) {
+            String userid = getIntent().getStringExtra("userid");
+            System.out.println(userid);
+        }
+
     }
 
 }

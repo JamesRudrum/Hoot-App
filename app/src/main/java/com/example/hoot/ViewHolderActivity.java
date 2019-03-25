@@ -31,8 +31,9 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         BTNViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(path);
-                ctx.startActivity(new Intent(ctx, RequestContactPageActivity.class));
+                Intent intent = new Intent(ctx, RequestContactPageActivity.class);
+                intent.putExtra("userid", path);
+                ctx.startActivity(intent);
             }
         });
 
