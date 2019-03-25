@@ -50,7 +50,7 @@ public class FeedActivity extends AppCompatActivity {
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("young").child(user.getUid()).exists()) {
                     myRef = database.getReference("users/wise");
-                    FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity> firebaseRecyclerAdapter =
+                    final FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity> firebaseRecyclerAdapter =
                             new FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity>(
                                     RecyclerModelActivity.class,
                                     R.layout.feed_card,
@@ -60,7 +60,7 @@ public class FeedActivity extends AppCompatActivity {
                                 @Override
 
                                 protected void populateViewHolder(ViewHolderActivity ViewHolderActivity, RecyclerModelActivity RecyclerModelActivity, int position) {
-                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage());
+                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey());
                                 }
                             };
                     recyclerView.setAdapter(firebaseRecyclerAdapter);
@@ -75,7 +75,7 @@ public class FeedActivity extends AppCompatActivity {
                             ) {
                                 @Override
                                 protected void populateViewHolder(ViewHolderActivity ViewHolderActivity, RecyclerModelActivity RecyclerModelActivity, int position) {
-                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage());
+                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getRoot().toString());
                                 }
                             };
                     recyclerView.setAdapter(firebaseRecyclerAdapter);

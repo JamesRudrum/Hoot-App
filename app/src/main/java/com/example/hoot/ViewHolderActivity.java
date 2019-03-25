@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.net.URL;
+
 public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
     View view;
@@ -20,7 +22,7 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         view = itemView;
     }
 
-    public void setDetails(final Context ctx, String name, String aboutme, String image){
+    public void setDetails(final Context ctx, String name, String aboutme, String image, final String path){
         TextView nameView = view.findViewById(R.id.feedName);
         TextView aboutMeView = view.findViewById(R.id.feedAboutMe);
         ImageView imageView = view.findViewById(R.id.feedProfileImage);
@@ -29,6 +31,7 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         BTNViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println(path);
                 ctx.startActivity(new Intent(ctx, RequestContactPageActivity.class));
             }
         });
