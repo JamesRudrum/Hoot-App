@@ -15,4 +15,6 @@
     <string name="about_me">About Me</string>
     <string name="title_activity_feed">FeedActivity</string>
     <string name="feed">Feed</string>
+    <string name="title_activity_interests">InterestsActivity</string>
+    <string name="select_interests">Select interests</string>
 </resources>

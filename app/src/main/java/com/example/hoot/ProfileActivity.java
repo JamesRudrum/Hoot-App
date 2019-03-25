@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
-    private String profileImageUrlString;
+    private String profileImageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        profileImageUrlString = "images/" + user.getUid();
+        profileImageName = user.getUid() + ".jpg";
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
-        storageReference = FirebaseStorage.getInstance().getReference(profileImageUrlString);
+        storageReference = FirebaseStorage.getInstance().getReference("images");
+        StorageReference profileImage = storageReference.child(profileImageName);
 
-        GlideApp.with(this).load(storageReference).into(IVprofilePagePicture);
+//        GlideApp.with(this).load(profileImage).into(IVprofilePagePicture);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             FirebaseUser user = mAuth.getCurrentUser();

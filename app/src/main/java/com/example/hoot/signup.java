@@ -93,7 +93,7 @@ public class signup extends AppCompatActivity {
                                     DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
-                                    startActivity(new Intent(signup.this, ProfileActivity.class));
+                                    startActivity(new Intent(signup.this, InterestsActivity.class));
                                     uploadImage(userid);
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
