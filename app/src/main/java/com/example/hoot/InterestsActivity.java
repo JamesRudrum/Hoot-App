@@ -1,12 +1,22 @@
 package com.example.hoot;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class InterestsActivity extends AppCompatActivity {
 
@@ -20,6 +30,10 @@ public class InterestsActivity extends AppCompatActivity {
     private RadioButton RBPhotography;
     private RadioButton RBBooks;
     private RadioButton RBSport;
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
+    private Button BTNinterestsSubmit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +42,7 @@ public class InterestsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle(R.string.select_interests);
+        getSupportActionBar().setTitle("Select interests");
 
         RBBoardGames = findViewById(R.id.RBBoardGames);
         RBPuzzles = findViewById(R.id.RBPuzzles);
@@ -40,6 +54,37 @@ public class InterestsActivity extends AppCompatActivity {
         RBPhotography = findViewById(R.id.RBPhotography);
         RBBooks = findViewById(R.id.RBBooks);
         RBSport = findViewById(R.id.RBSport);
+        BTNinterestsSubmit = findViewById(R.id.BTNinterestsSubmit);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
+        BTNinterestsSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mAuth = FirebaseAuth.getInstance();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (dataSnapshot.child("young").child(user.getUid()).exists()) {
+                            String userid = user.getUid();
+                            DatabaseReference myRef = databaseReference.child("young").child(userid);
+                            myRef.child("Interests").setValue("set");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+
+
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
