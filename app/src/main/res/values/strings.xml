@@ -11,12 +11,13 @@
     <string name="wise">Wise</string>
     <string name="account_type">Account type</string>
     <string name="first_name">First Name</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="about_me">About Me</string>
     <string name="title_activity_feed">FeedActivity</string>
     <string name="feed">Feed</string>
-    <string name="title_activity_profile">ProfileActivity</string>
     <string name="profile_title">Profile</string>
     <string name="name">Name</string>
     <string name="to_do">To do</string>
-    <string name="about_me">About Me</string>
     <string name="view_profile">View profile</string>
+    <string name="title_activity_requestcontactpage">requestcontactpage</string>
 </resources>
