@@ -20,11 +20,14 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAct
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasType;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.junit.Assert.*;
 
-public class signupTest {
+public class ProfileActivityTest {
 
     private FirebaseAuth mAuth;
 
@@ -33,39 +36,43 @@ public class signupTest {
             new IntentsTestRule<>(signup.class);
 
     @Test
-    public void youngUserSubmitSignUpDetails() {
-        onView(withId(R.id.ETfirstname)).perform(typeText("James"));
-        onView(withId(R.id.ETemail)).perform(typeText("kingjames@test.com"));
+    public void youngUserSubmitSignUpDetailsAndViewProfile() {
+        onView(withId(R.id.ETfirstname)).perform(typeText("Brooke"));
+        onView(withId(R.id.ETemail)).perform(typeText("queenbrooke@test.com"));
         onView(withId(R.id.ETpassword)).perform(typeText("password123"));
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.ETaboutme)).perform(typeText("Ya Gunners Ya"));
+        onView(withId(R.id.ETaboutme)).perform(typeText("I am the queen of everything"));
         Espresso.closeSoftKeyboard();
         Intent resultData = new Intent();
         intending(allOf(hasAction(equalTo(resultData.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
-        SystemClock.sleep(5000);
-        onView(withId(R.id.TVaboutMeTitle)).check(matches(isDisplayed()));
+        SystemClock.sleep(8000);
+        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Brooke"))));
+        onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Young"))));
+        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("I am the queen of everything"))));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();
     }
 
     @Test
-    public void oldUserSubmitSignUpDetails() {
-        onView(withId(R.id.ETfirstname)).perform(typeText("Elliot"));
-        onView(withId(R.id.ETemail)).perform(typeText("kingelliot@test.com"));
+    public void wiseUserSubmitSignUpDetailsAndViewProfile() {
+        onView(withId(R.id.ETfirstname)).perform(typeText("Erin"));
+        onView(withId(R.id.ETemail)).perform(typeText("queenerin@test.com"));
         onView(withId(R.id.ETpassword)).perform(typeText("password123"));
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.ETaboutme)).perform(typeText("I love fulham"));
+        onView(withId(R.id.ETaboutme)).perform(typeText("I am also the queen of everything"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SWaccounttype)).perform(click());
         Intent resultData = new Intent();
         intending(allOf(hasAction(equalTo(resultData.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
-        SystemClock.sleep(5000);
-        onView(withId(R.id.TVaboutMeTitle)).check(matches(isDisplayed()));
+        SystemClock.sleep(8000);
+        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Erin"))));
+        onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Wise"))));
+        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("I am also the queen of everything"))));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();

@@ -42,7 +42,7 @@ public class MainActivityTest {
     @Test
     public void userCanPressSignUpLink() {
         onView(withId(R.id.BTNsignuplink)).perform(click());
-        onView(withId(R.id.signup)).check(matches(withText("Sign Up")));
+        onView(withId(R.id.TVpic)).check(matches(withText("Select your profile picture:")));
         onView(withId(R.id.ETpassword)).check(matches(withHint("Password")));
     }
 
