@@ -5,29 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ProfileActivity"
-    tools:showIn="@layout/activity_profile">
+    tools:context=".requestcontactpage"
+    tools:showIn="@layout/activity_requestcontactpage">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarProfilePage"
+        android:id="@+id/toolbarRCPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ImageView
-        android:id="@+id/IVprofilePagePicture"
+        android:id="@+id/IVpictureRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:contentDescription="profileAvatarProfilePage"
+        android:contentDescription="ProfileAvatarRCPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarProfilePage"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarRCPage"
+        tools:srcCompat="@tools:sample/avatars[3]" />
 
     <TextView
-        android:id="@+id/TVprofilePageName"
+        android:id="@+id/TVprofileNameRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -35,10 +35,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture" />
+        app:layout_constraintTop_toBottomOf="@+id/IVpictureRCPage" />
 
     <TextView
-        android:id="@+id/TVprofileWiseOrYoung"
+        android:id="@+id/TVwiseOrYoungRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -46,30 +46,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IVprofilePagePicture" />
+        app:layout_constraintTop_toBottomOf="@+id/IVpictureRCPage" />
 
     <TextView
-        android:id="@+id/TVaboutMeTitle"
+        android:id="@+id/TVaboutMeTitleRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/about_me"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVprofileWiseOrYoung" />
+        app:layout_constraintTop_toBottomOf="@+id/TVwiseOrYoungRCPage" />
 
     <TextView
-        android:id="@+id/TVAboutMeProfile"
+        android:id="@+id/TVAboutMeProfileRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVaboutMeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/TVaboutMeTitleRCPage" />
 
     <EditText
-        android:id="@+id/ETinteretsListProfilePage"
+        android:id="@+id/ETinteretsListRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -77,6 +77,23 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TVAboutMeProfile" />
+        app:layout_constraintTop_toBottomOf="@id/TVAboutMeProfileRCPage" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABchatButtonRCPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/sym_action_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ETinteretsListRCPage" />
+
+    <!--=======-->
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>
