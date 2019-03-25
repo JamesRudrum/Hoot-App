@@ -1,5 +1,6 @@
 package com.example.hoot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -67,10 +68,15 @@ public class InterestsActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         mAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = mAuth.getCurrentUser();
+                        String userid = user.getUid();
                         if (dataSnapshot.child("young").child(user.getUid()).exists()) {
-                            String userid = user.getUid();
-                            DatabaseReference myRef = databaseReference.child("young").child(userid);
-                            myRef.child("Interests").setValue("set");
+                            DatabaseReference myRef = databaseReference.child("young").child(userid).child("Interests");
+                            if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
+                            if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
+
+
+                            startActivity(new Intent(InterestsActivity.this, InterestsActivity.class));
+
                         }
                     }
 
