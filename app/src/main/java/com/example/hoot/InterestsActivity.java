@@ -35,7 +35,6 @@ public class InterestsActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private Button BTNinterestsSubmit;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,9 +72,31 @@ public class InterestsActivity extends AppCompatActivity {
                             DatabaseReference myRef = databaseReference.child("young").child(userid).child("Interests");
                             if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
                             if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
+                            if (RBKnitting.isChecked()) myRef.child("Knitting").setValue("true");
+                            if (RBMusic.isChecked()) myRef.child("Music").setValue("true");
+                            if (RBFilms.isChecked()) myRef.child("Films").setValue("true");
+                            if (RBCurrentAffairs.isChecked()) myRef.child("CurrentAffairs").setValue("true");
+                            if (RBCardGames.isChecked()) myRef.child("CardGames").setValue("true");
+                            if (RBPhotography.isChecked()) myRef.child("Photography").setValue("true");
+                            if (RBBooks.isChecked()) myRef.child("Books").setValue("true");
+                            if (RBSport.isChecked()) myRef.child("Sport").setValue("true");
 
+                            startActivity(new Intent(InterestsActivity.this, ProfileActivity.class));
 
-                            startActivity(new Intent(InterestsActivity.this, InterestsActivity.class));
+                        } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
+                            DatabaseReference myRef = databaseReference.child("wise").child(userid).child("Interests");
+                            if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
+                            if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
+                            if (RBKnitting.isChecked()) myRef.child("Knitting").setValue("true");
+                            if (RBMusic.isChecked()) myRef.child("Music").setValue("true");
+                            if (RBFilms.isChecked()) myRef.child("Films").setValue("true");
+                            if (RBCurrentAffairs.isChecked()) myRef.child("CurrentAffairs").setValue("true");
+                            if (RBCardGames.isChecked()) myRef.child("CardGames").setValue("true");
+                            if (RBPhotography.isChecked()) myRef.child("Photography").setValue("true");
+                            if (RBBooks.isChecked()) myRef.child("Books").setValue("true");
+                            if (RBSport.isChecked()) myRef.child("Sport").setValue("true");
+                            startActivity(new Intent(InterestsActivity.this, ProfileActivity.class));
+
 
                         }
                     }
@@ -88,6 +109,7 @@ public class InterestsActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 
