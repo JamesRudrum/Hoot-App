@@ -18,4 +18,5 @@
     <string name="name">Name</string>
     <string name="to_do">To do</string>
     <string name="about_me">About Me</string>
+    <string name="view_profile">View profile</string>
 </resources>
