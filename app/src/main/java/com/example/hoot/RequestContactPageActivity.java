@@ -15,7 +15,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class RequestContactPageActivity extends AppCompatActivity {
 
@@ -24,8 +26,6 @@ public class RequestContactPageActivity extends AppCompatActivity {
     private TextView TVwiseOrYoungRCPage;
     private TextView TVaboutMeTitleRCPage;
     private DatabaseReference databaseReference;
-    private StorageReference storageReference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class RequestContactPageActivity extends AppCompatActivity {
         TVprofileNameRCPage = findViewById(R.id.TVprofileNameRCPage);
         TVaboutMeTitleRCPage = findViewById(R.id.TVaboutMeTitleRCPage);
         TVwiseOrYoungRCPage = findViewById(R.id.TVwiseOrYoungRCPage);
+        IVpictureRCPage = findViewById(R.id.IVpictureRCPage);
 
         if (getIntent().hasExtra("userid")) {
             String userid = getIntent().getStringExtra("userid");
@@ -50,10 +51,13 @@ public class RequestContactPageActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String name = dataSnapshot.child("name").getValue(String.class);
                     String aboutMe = dataSnapshot.child("aboutme").getValue(String.class);
+                    String image = dataSnapshot.child("image").getValue(String.class);
                     String wiseoryoung = getIntent().getStringExtra("wiseoryoung");
                     TVprofileNameRCPage.setText(name);
                     TVaboutMeTitleRCPage.setText(aboutMe);
                     TVwiseOrYoungRCPage.setText(wiseoryoung);
+                    GlideApp.with(RequestContactPageActivity.this).load(image).into(IVpictureRCPage);
+
                 }
 
                 @Override
