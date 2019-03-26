@@ -21,6 +21,8 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasTyp
 import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.AllOf.allOf;
@@ -68,6 +70,14 @@ public class InterestsActivityTest {
         onView(withId(R.id.RBPhotography)).check(matches(isChecked()));
         onView(withId(R.id.RBSport)).perform(click());
         onView(withId(R.id.RBSport)).check(matches(isChecked()));
+        onView(withId(R.id.BTNinterestsSubmit)).perform(click());
+        SystemClock.sleep(5000);
+        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Bob"))));
+        onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Young"))));
+        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("Bob's here"))));
+        onView(withId(R.id.TVMyInterests)).check(matches(withText(containsString("My Interests"))));
+        onView(withId(R.id.TVinterestsListProfilePage)).check(matches(withText(containsString("Card Games\nBoard Games\nPuzzles\nKnitting\nMusic\nFilms\nCurrent Affairs\nPhotography\nBooks\nSport\n"))));
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();
