@@ -25,7 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_toStartOf="@+id/fab"
         app:layout_constraintBottom_toBottomOf="parent"
-      />
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message... "
+            android:id="@+id/input"
+            />
+
+    </android.support.design.widget.TextInputEditText>
 
     <ListView
         android:id="@+id/list_of_messages"
