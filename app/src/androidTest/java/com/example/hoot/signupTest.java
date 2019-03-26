@@ -45,7 +45,7 @@ public class signupTest {
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.TVaboutMeTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.RBBoardGames)).check(matches(isDisplayed()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();
@@ -65,7 +65,7 @@ public class signupTest {
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.TVaboutMeTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.RBBoardGames)).check(matches(isDisplayed()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();

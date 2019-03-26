@@ -48,9 +48,7 @@ public class ProfileActivityTest {
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(8000);
-        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Brooke"))));
-        onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Young"))));
-        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("I am the queen of everything"))));
+        onView(withId(R.id.RBBoardGames)).check(matches(isDisplayed()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();
@@ -70,9 +68,7 @@ public class ProfileActivityTest {
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(8000);
-        onView(withId(R.id.TVprofilePageName)).check(matches(withText(containsString("Erin"))));
-        onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Wise"))));
-        onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("I am also the queen of everything"))));
+        onView(withId(R.id.RBBoardGames)).check(matches(isDisplayed()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();
