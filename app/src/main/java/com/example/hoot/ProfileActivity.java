@@ -39,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String profileImageName;
     private TextView TVinterestsListProfilePage;
     private List<String> interestList;
+    private TextView TVMyInterests;
 
 
     @Override
@@ -124,16 +125,8 @@ public class ProfileActivity extends AppCompatActivity {
         TVaboutMeTitle = findViewById(R.id.TVaboutMeTitle);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
+        TVMyInterests = findViewById(R.id.TVMyInterests);
 
-
-//        FloatingActionButton fab = findViewById(R.id.fab);
-////        fab.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-////            }
-////        });
     }
 
    }
