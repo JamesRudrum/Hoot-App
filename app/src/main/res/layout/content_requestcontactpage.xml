@@ -51,22 +51,12 @@
     <TextView
         android:id="@+id/TVaboutMeTitleRCPage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginTop="32dp"
         android:text="@string/textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVwiseOrYoungRCPage" />
-
-    <TextView
-        android:id="@+id/TVAboutMeProfileRCPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/textview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVaboutMeTitleRCPage" />
 
     <EditText
         android:id="@+id/ETinteretsListRCPage"
@@ -77,7 +67,7 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TVAboutMeProfileRCPage" />
+        app:layout_constraintTop_toBottomOf="@id/TVaboutMeTitleRCPage" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/FABchatButtonRCPage"
