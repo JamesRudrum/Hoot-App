@@ -35,8 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView TVAboutMeProfile;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private StorageReference storageReference;
-    private String profileImageName;
+    private StorageReference profileImageStorageReference;
     private TextView TVinterestsListProfilePage;
     private List<String> interestList;
     private TextView TVMyInterests;
@@ -49,33 +48,46 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        profileImageName = user.getUid() + ".jpg";
+        FirebaseUser user = mAuth.getCurrentUser();;
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
-        storageReference = FirebaseStorage.getInstance().getReference("images");
-        StorageReference profileImage = storageReference.child(profileImageName);
+        profileImageStorageReference = FirebaseStorage.getInstance().getReference("images").child(user.getUid());
+        IVprofilePagePicture = findViewById(R.id.IVprofilePagePicture);
+        TVprofileWiseOrYoung = findViewById(R.id.TVprofileWiseOrYoung);
+        TVprofilePageName = findViewById(R.id.TVprofilePageName);
+        TVaboutMeTitle = findViewById(R.id.TVaboutMeTitle);
+        TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
+        TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
+        TVMyInterests = findViewById(R.id.TVMyInterests);
 
-//        GlideApp.with(this).load(profileImage).into(IVprofilePagePicture);
+        GlideApp.with(ProfileActivity.this).load(profileImageStorageReference).into(IVprofilePagePicture);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             FirebaseUser user = mAuth.getCurrentUser();
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 interestList = new ArrayList<>();
-                if (dataSnapshot.child("young").child(user.getUid()).exists()) {
+                if (userIsYoung(dataSnapshot)) {
                     displayUserDetails(dataSnapshot, "young", "Young");
                     getAllUserInterests(dataSnapshot, "young");
-                    addingInterestsToView();
+                    addInterestsToView();
 
-                } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
+                } else if (userIsWise(dataSnapshot)) {
                     displayUserDetails(dataSnapshot, "wise", "Wise");
                     getAllUserInterests(dataSnapshot, "wise");
-                    addingInterestsToView();
+                    addInterestsToView();
                 }
 
             }
 
-            private void addingInterestsToView() {
+            private boolean userIsWise(@NonNull DataSnapshot dataSnapshot) {
+                return dataSnapshot.child("wise").child(user.getUid()).exists();
+            }
+
+            private boolean userIsYoung(@NonNull DataSnapshot dataSnapshot) {
+                return dataSnapshot.child("young").child(user.getUid()).exists();
+            }
+
+            private void addInterestsToView() {
                 int numberOfInterests = interestList.size();
                 for (int i = 0; i < numberOfInterests; i++) {
                     TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
@@ -120,13 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        IVprofilePagePicture = findViewById(R.id.IVprofilePagePicture);
-        TVprofileWiseOrYoung = findViewById(R.id.TVprofileWiseOrYoung);
-        TVprofilePageName = findViewById(R.id.TVprofilePageName);
-        TVaboutMeTitle = findViewById(R.id.TVaboutMeTitle);
-        TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
-        TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
-        TVMyInterests = findViewById(R.id.TVMyInterests);
+
 
     }
 
