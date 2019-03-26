@@ -64,21 +64,22 @@ public class ProfileActivity extends AppCompatActivity {
                 interestList = new ArrayList<>();
                 if (dataSnapshot.child("young").child(user.getUid()).exists()) {
                     displayUserDetails(dataSnapshot, "young", "Young");
-                    addInterestsToInterestsView(dataSnapshot, "young");
-                    int numberOfInterests = interestList.size();
-                    for(int i = 0; i < numberOfInterests; i ++) {
-                        TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
-                    }
+                    getAllUserInterests(dataSnapshot, "young");
+                    addingInterestsToView();
 
                 } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
                     displayUserDetails(dataSnapshot, "wise", "Wise");
-                    addInterestsToInterestsView(dataSnapshot, "wise");
-                    int numberOfInterests = interestList.size();
-                    for(int i = 0; i < numberOfInterests; i ++) {
-                        TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
-                    }
+                    getAllUserInterests(dataSnapshot, "wise");
+                    addingInterestsToView();
                 }
 
+            }
+
+            private void addingInterestsToView() {
+                int numberOfInterests = interestList.size();
+                for (int i = 0; i < numberOfInterests; i++) {
+                    TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
+                }
             }
 
             private void displayUserDetails(@NonNull DataSnapshot dataSnapshot, String accountType, String accountTypeDisplay) {
@@ -89,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
                 TVAboutMeProfile.setText(aboutMe);
             }
 
-            private void addInterestsToInterestsView(@NonNull DataSnapshot dataSnapshot, String accountType) {
+            private void getAllUserInterests(@NonNull DataSnapshot dataSnapshot, String accountType) {
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CardGames").exists())
                     interestList.add("Card Games\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("BoardGames").exists())
