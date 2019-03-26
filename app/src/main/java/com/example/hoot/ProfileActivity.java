@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -33,6 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private String profileImageName;
+    private TextView TVinterestsListProfilePage;
+    private ArrayList interestList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,20 @@ public class ProfileActivity extends AppCompatActivity {
                     TVprofilePageName.setText(name);
                     TVprofileWiseOrYoung.setText("Young");
                     TVAboutMeProfile.setText(aboutMe);
+                    interestList = new ArrayList<>();
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("CardGames").exists()) {
+                        interestList.add("Card Games\n");
+
+                    }
+
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("BoardGames").exists()) {
+                        interestList.add("Board Games\n");
+                    }
+
+                    int numberOfInterests = interestList.size();
+                    for(int i = 0; i < numberOfInterests; i ++) {
+                        TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
+                    }
                 } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
                     String name = dataSnapshot.child("wise").child(user.getUid()).child("name").getValue(String.class);
                     String aboutMe = dataSnapshot.child("wise").child(user.getUid()).child("aboutme").getValue(String.class);
@@ -83,16 +103,17 @@ public class ProfileActivity extends AppCompatActivity {
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
         TVaboutMeTitle = findViewById(R.id.TVaboutMeTitle);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
+        TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+////        fab.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
+////            }
+////        });
     }
 
    }

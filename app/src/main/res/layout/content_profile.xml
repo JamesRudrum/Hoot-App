@@ -68,13 +68,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVaboutMeTitle" />
 
-    <EditText
-        android:id="@+id/ETinteretsListProfilePage"
+    <TextView
+        android:id="@+id/TVinterestsListProfilePage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
+        android:maxLines = "10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TVAboutMeProfile" />
