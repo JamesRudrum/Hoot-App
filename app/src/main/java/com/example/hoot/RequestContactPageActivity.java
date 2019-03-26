@@ -1,5 +1,6 @@
 package com.example.hoot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -67,14 +68,15 @@ public class RequestContactPageActivity extends AppCompatActivity {
             });
 
         }
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+        FloatingActionButton fab = findViewById(R.id.FABchatButtonRCPage);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RequestContactPageActivity.this, Chat2Activity.class));
+//                Intent intent = new Intent(, );;
+            }
+        });
 
 
     }

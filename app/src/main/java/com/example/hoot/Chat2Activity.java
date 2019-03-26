@@ -39,7 +39,7 @@ public class Chat2Activity extends Activity {
             public void onClick(View v) {
                 EditText input = (EditText)findViewById(R.id.input);
                 FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessage(input.getText().toString(),
-                        FirebaseAuth.getInstance().getCurrentUser().getDisplayName()));
+                        FirebaseAuth.getInstance().getCurrentUser().getUid()));
                 input.setText("");
             }
         });
