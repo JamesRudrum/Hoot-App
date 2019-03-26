@@ -18,6 +18,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intending;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasType;
+import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -35,7 +36,7 @@ public class InterestsActivityTest {
             new IntentsTestRule<>(signup.class);
 
     @Test
-    public void youngUserTakesYouToInterestsActivity() {
+    public void youngUserTakesYouToInterestsActivityandChecksAllInterests() {
         onView(withId(R.id.ETfirstname)).perform(typeText("Bob"));
         onView(withId(R.id.ETemail)).perform(typeText("bob@bob.com"));
         onView(withId(R.id.ETpassword)).perform(typeText("bob123"));
@@ -47,7 +48,26 @@ public class InterestsActivityTest {
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
+        onView(withId(R.id.RBBoardGames)).perform(click());
+        onView(withId(R.id.RBBoardGames)).check(matches(isChecked()));
+        onView(withId(R.id.RBBooks)).perform(click());
+        onView(withId(R.id.RBBooks)).check(matches(isChecked()));
+        onView(withId(R.id.RBPuzzles)).perform(click());
+        onView(withId(R.id.RBPuzzles)).check(matches(isChecked()));
+        onView(withId(R.id.RBKnitting)).perform(click());
+        onView(withId(R.id.RBKnitting)).check(matches(isChecked()));
+        onView(withId(R.id.RBMusic)).perform(click());
+        onView(withId(R.id.RBMusic)).check(matches(isChecked()));
+        onView(withId(R.id.RBFilms)).perform(click());
+        onView(withId(R.id.RBFilms)).check(matches(isChecked()));
+        onView(withId(R.id.RBCurrentAffairs)).perform(click());
+        onView(withId(R.id.RBCurrentAffairs)).check(matches(isChecked()));
+        onView(withId(R.id.RBCardGames)).perform(click());
+        onView(withId(R.id.RBCardGames)).check(matches(isChecked()));
+        onView(withId(R.id.RBPhotography)).perform(click());
+        onView(withId(R.id.RBPhotography)).check(matches(isChecked()));
+        onView(withId(R.id.RBSport)).perform(click());
+        onView(withId(R.id.RBSport)).check(matches(isChecked()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user.delete();
