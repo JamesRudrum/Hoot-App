@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".requestcontactpage"
+    tools:context=".RequestContactPageActivity"
     tools:showIn="@layout/activity_requestcontactpage">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarRCPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
         android:id="@+id/IVpictureRCPage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="32dp"
-        android:contentDescription="ProfileAvatarRCPage"
+        android:contentDescription="@string/profileavatarrcpage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarRCPage"
@@ -31,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:text="@string/textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:text="@string/textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,49 +53,36 @@
     <TextView
         android:id="@+id/TVaboutMeTitleRCPage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:text="@string/textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVwiseOrYoungRCPage" />
 
     <TextView
-        android:id="@+id/TVAboutMeProfileRCPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVaboutMeTitleRCPage" />
-
-    <EditText
         android:id="@+id/ETinteretsListRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:autofillHints=""
         android:ems="10"
-        android:inputType="textMultiLine"
+        android:text="@string/select_interests"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TVAboutMeProfileRCPage" />
+        app:layout_constraintTop_toBottomOf="@id/TVaboutMeTitleRCPage" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/FABchatButtonRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
-        app:srcCompat="@android:drawable/sym_action_chat"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ETinteretsListRCPage" />
-
-    <!--=======-->
-
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/ETinteretsListRCPage"
+        app:srcCompat="@android:drawable/sym_action_chat" />
 
 </android.support.constraint.ConstraintLayout>

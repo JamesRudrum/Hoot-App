@@ -41,13 +41,14 @@ public class signupTest {
         onView(withId(R.id.ETaboutme)).perform(typeText("Ya Gunners Ya"));
         Espresso.closeSoftKeyboard();
         Intent resultData = new Intent();
-        intending(allOf(hasAction(equalTo(resultData.ACTION_GET_CONTENT)),
+        intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.TVaboutMeTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.RBBoardGames)).check(matches(isDisplayed()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
         user.delete();
     }
 
@@ -61,13 +62,14 @@ public class signupTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SWaccounttype)).perform(click());
         Intent resultData = new Intent();
-        intending(allOf(hasAction(equalTo(resultData.ACTION_GET_CONTENT)),
+        intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
         onView(withId(R.id.BTNsignup)).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.TVaboutMeTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.RBBoardGames)).check(matches(isDisplayed()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
         user.delete();
     }
 }
