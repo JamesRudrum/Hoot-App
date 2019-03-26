@@ -13,26 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".requestcontactpage"
-            android:label="@string/title_activity_requestcontactpage"
+            android:name=".Chat2Activity"
+            android:label="@string/title_activity_chat2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".ProfileActivity"
-<<<<<<< HEAD
-            android:label="@string/app_name"
+            android:name=".requestcontactpage"
+            android:label="@string/title_activity_requestcontactpage"
             android:theme="@style/AppTheme.NoActionBar" />
-=======
+        <activity
+            android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
->>>>>>> 5db9fcf07fde1fe579c62ce45a525c2eff62c4f1
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FeedActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <!--<activity-->
-            <!--android:name=".FeedActivity"-->
-            <!--android:label="@string/app_name"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".signup"
             android:label="@string/title_activity_signup"

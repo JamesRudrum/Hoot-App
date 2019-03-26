@@ -15,10 +15,7 @@
     <string name="about_me">About Me</string>
     <string name="title_activity_feed">FeedActivity</string>
     <string name="feed">Feed</string>
-<<<<<<< HEAD
-    <string name="title_activity_profile">ProfileActivity</string>
     <string name="profile_title">Profile</string>
     <string name="title_activity_requestcontactpage">requestcontactpage</string>
-=======
->>>>>>> 5db9fcf07fde1fe579c62ce45a525c2eff62c4f1
+    <string name="title_activity_chat2">Chat2Activity</string>
 </resources>
