@@ -51,8 +51,6 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         profileImageName = user.getUid() + ".jpg";
-
-
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         storageReference = FirebaseStorage.getInstance().getReference("images");
         StorageReference profileImage = storageReference.child(profileImageName);
@@ -65,27 +63,16 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 interestList = new ArrayList<>();
                 if (dataSnapshot.child("young").child(user.getUid()).exists()) {
-                    String name = dataSnapshot.child("young").child(user.getUid()).child("name").getValue(String.class);
-                    String aboutMe = dataSnapshot.child("young").child(user.getUid()).child("aboutme").getValue(String.class);
-                    TVprofilePageName.setText(name);
-                    TVprofileWiseOrYoung.setText("Young");
-                    TVAboutMeProfile.setText(aboutMe);
+                    displayUserDetails(dataSnapshot, "young", "Young");
                     addInterestsToInterestsView(dataSnapshot, "young");
-
                     int numberOfInterests = interestList.size();
                     for(int i = 0; i < numberOfInterests; i ++) {
                         TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
                     }
 
                 } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
-                    String name = dataSnapshot.child("wise").child(user.getUid()).child("name").getValue(String.class);
-                    String aboutMe = dataSnapshot.child("wise").child(user.getUid()).child("aboutme").getValue(String.class);
-                    TVprofilePageName.setText(name);
-                    TVprofileWiseOrYoung.setText("Wise");
-                    TVAboutMeProfile.setText(aboutMe);
-
+                    displayUserDetails(dataSnapshot, "wise", "Wise");
                     addInterestsToInterestsView(dataSnapshot, "wise");
-
                     int numberOfInterests = interestList.size();
                     for(int i = 0; i < numberOfInterests; i ++) {
                         TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
@@ -94,26 +81,34 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
 
-            private void addInterestsToInterestsView(@NonNull DataSnapshot dataSnapshot, String young) {
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("CardGames").exists())
+            private void displayUserDetails(@NonNull DataSnapshot dataSnapshot, String accountType, String accountTypeDisplay) {
+                String name = dataSnapshot.child(accountType).child(user.getUid()).child("name").getValue(String.class);
+                String aboutMe = dataSnapshot.child(accountType).child(user.getUid()).child("aboutme").getValue(String.class);
+                TVprofilePageName.setText(name);
+                TVprofileWiseOrYoung.setText(accountTypeDisplay);
+                TVAboutMeProfile.setText(aboutMe);
+            }
+
+            private void addInterestsToInterestsView(@NonNull DataSnapshot dataSnapshot, String accountType) {
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CardGames").exists())
                     interestList.add("Card Games\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("BoardGames").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("BoardGames").exists())
                     interestList.add("Board Games\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Puzzles").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Puzzles").exists())
                     interestList.add("Puzzles\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Knitting").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Knitting").exists())
                     interestList.add("Knitting\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Music").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Music").exists())
                     interestList.add("Music\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Films").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Films").exists())
                     interestList.add("Films\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("CurrentAffairs").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CurrentAffairs").exists())
                     interestList.add("Current Affairs\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Photography").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Photography").exists())
                     interestList.add("Photography\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Books").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Books").exists())
                     interestList.add("Books\n");
-                if (dataSnapshot.child(young).child(user.getUid()).child("Interests").child("Sport").exists())
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Sport").exists())
                     interestList.add("Sport\n");
             }
 
