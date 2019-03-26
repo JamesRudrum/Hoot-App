@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StreamDownloadTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
@@ -93,8 +94,8 @@ public class signup extends AppCompatActivity {
                                     DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
-                                    startActivity(new Intent(signup.this, ProfileActivity.class));
                                     uploadImage(userid);
+                                    startActivity(new Intent(signup.this, InterestsActivity.class));
                             } else {
                                     Toast.makeText(signup.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
                                 }
@@ -132,7 +133,13 @@ public class signup extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            Toast.makeText(signup.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            storageReference.child("images/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    System.out.println(uri);
+                                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                                }
+                            });
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

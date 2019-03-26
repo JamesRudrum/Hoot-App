@@ -13,7 +13,6 @@ import android.text.format.DateFormat;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseListAdapter;
-import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -51,22 +50,20 @@ public class Chat2Activity extends Activity {
     private void displayChatMessage() {
 
         ListView listOfMessage = (ListView)findViewById(R.id.list_of_messages);
-        Query query = FirebaseDatabase.getInstance().getReference().child("chats");
-        FirebaseListOptions<ChatMessage> options = new FirebaseListOptions.Builder<ChatMessage>()
-                .setQuery(query,ChatMessage.class)
-                .setLayout(android.R.layout.activity_list_item)
-                .build();
-        adapter = new FirebaseListAdapter<ChatMessage>(options) {
+        adapter = new FirebaseListAdapter<ChatMessage>(this,ChatMessage.class,R.layout.list_item,FirebaseDatabase.getInstance().getReference()) {
             @Override
             protected void populateView(@NonNull View v, @NonNull ChatMessage model, int position) {
-                TextView messageText = (TextView)v.findViewById(R.id.message_text);
-                TextView messageUser = (TextView)v.findViewById(R.id.message_user);
-                TextView messageTime = (TextView)v.findViewById(R.id.message_time);
+
+                TextView messageText,messageUser,messageTime;
+                messageText = (TextView)findViewById(R.id.message_text);
+                messageUser = (TextView)findViewById(R.id.message_user);
+                messageTime = (TextView)findViewById(R.id.message_time);
 
                 messageText.setText(model.getMessageText());
                 messageUser.setText(model.getMessageUser());
                 messageTime.setText(DateFormat.format("dd-mm-yyyyy (HH:mm:ss)",model.getMessageTime()));
             }
         };
-    };
+        listOfMessage.setAdapter(adapter);
+    }
 }

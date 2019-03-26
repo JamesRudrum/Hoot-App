@@ -52,6 +52,6 @@ public class MainActivityTest {
         onView(withId(R.id.ETLoginPassword)).perform(typeText("password123"));
         onView(withId(R.id.BTNsignin)).check(matches(isDisplayed())).perform(click());
         SystemClock.sleep(5000);
-        onView(withId(R.id.feedTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.BTNViewProfile)).check(matches(isDisplayed()));
     }
 }
