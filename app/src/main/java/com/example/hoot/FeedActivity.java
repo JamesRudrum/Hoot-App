@@ -60,7 +60,7 @@ public class FeedActivity extends AppCompatActivity {
                                 @Override
 
                                 protected void populateViewHolder(ViewHolderActivity ViewHolderActivity, RecyclerModelActivity RecyclerModelActivity, int position) {
-                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), "wise/" + this.getRef(position).getKey());
+                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey(), "Wise");
                                 }
                             };
                     recyclerView.setAdapter(firebaseRecyclerAdapter);
@@ -75,7 +75,7 @@ public class FeedActivity extends AppCompatActivity {
                             ) {
                                 @Override
                                 protected void populateViewHolder(ViewHolderActivity ViewHolderActivity, RecyclerModelActivity RecyclerModelActivity, int position) {
-                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), "young/" + this.getRef(position).getKey());
+                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey(), "Young");
                                 }
                             };
                     recyclerView.setAdapter(firebaseRecyclerAdapter);
