@@ -23,6 +23,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private String profileImageName;
     private TextView TVinterestsListProfilePage;
-    private ArrayList interestList;
+    private List<String> interestList;
 
 
     @Override
@@ -61,32 +62,51 @@ public class ProfileActivity extends AppCompatActivity {
             FirebaseUser user = mAuth.getCurrentUser();
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                interestList = new ArrayList<>();
                 if (dataSnapshot.child("young").child(user.getUid()).exists()) {
                     String name = dataSnapshot.child("young").child(user.getUid()).child("name").getValue(String.class);
                     String aboutMe = dataSnapshot.child("young").child(user.getUid()).child("aboutme").getValue(String.class);
                     TVprofilePageName.setText(name);
                     TVprofileWiseOrYoung.setText("Young");
                     TVAboutMeProfile.setText(aboutMe);
-                    interestList = new ArrayList<>();
-                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("CardGames").exists()) {
-                        interestList.add("Card Games\n");
-
-                    }
-
-                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("BoardGames").exists()) {
-                        interestList.add("Board Games\n");
-                    }
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("CardGames").exists()) interestList.add("Card Games\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("BoardGames").exists()) interestList.add("Board Games\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Puzzles").exists()) interestList.add("Puzzles\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Knitting").exists()) interestList.add("Knitting\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Music").exists()) interestList.add("Music\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Films").exists()) interestList.add("Films\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("CurrentAffairs").exists()) interestList.add("Current Affairs\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Photography").exists()) interestList.add("Photography\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Books").exists()) interestList.add("Books\n");
+                    if (dataSnapshot.child("young").child(user.getUid()).child("Interests").child("Sport").exists()) interestList.add("Sport\n");
 
                     int numberOfInterests = interestList.size();
                     for(int i = 0; i < numberOfInterests; i ++) {
                         TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
                     }
+
                 } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
                     String name = dataSnapshot.child("wise").child(user.getUid()).child("name").getValue(String.class);
                     String aboutMe = dataSnapshot.child("wise").child(user.getUid()).child("aboutme").getValue(String.class);
                     TVprofilePageName.setText(name);
                     TVprofileWiseOrYoung.setText("Wise");
                     TVAboutMeProfile.setText(aboutMe);
+
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("CardGames").exists()) interestList.add("Card Games\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("BoardGames").exists()) interestList.add("Board Games\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Puzzles").exists()) interestList.add("Puzzles\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Knitting").exists()) interestList.add("Knitting\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Music").exists()) interestList.add("Music\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Films").exists()) interestList.add("Films\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("CurrentAffairs").exists()) interestList.add("Current Affairs\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Photography").exists()) interestList.add("Photography\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Books").exists()) interestList.add("Books\n");
+                    if (dataSnapshot.child("wise").child(user.getUid()).child("Interests").child("Sport").exists()) interestList.add("Sport\n");
+
+                    int numberOfInterests = interestList.size();
+                    for(int i = 0; i < numberOfInterests; i ++) {
+                        TVinterestsListProfilePage.append((CharSequence) interestList.get(i));
+                    }
                 }
 
             }
