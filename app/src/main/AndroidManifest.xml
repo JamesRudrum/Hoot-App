@@ -15,10 +15,13 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".EmailActivity"
+            android:label="@string/title_activity_email"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Chat2Activity"
             android:label="@string/title_activity_chat2"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".InterestsActivity"
             android:label="@string/title_activity_interests"
@@ -27,7 +30,6 @@
             android:name=".RequestContactPageActivity"
             android:label="@string/title_activity_requestcontactpage"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ProfileActivity"
             android:label="@string/app_name"
