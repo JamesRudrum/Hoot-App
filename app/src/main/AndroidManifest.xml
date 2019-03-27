@@ -19,10 +19,6 @@
             android:label="@string/title_activity_email"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Chat2Activity"
-            android:label="@string/title_activity_chat2"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".InterestsActivity"
             android:label="@string/title_activity_interests"
             android:theme="@style/AppTheme.NoActionBar" />
