@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,10 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class EmailActivity extends AppCompatActivity {
 
-    private EditText mEditTextTo;
     private EditText mEditTextSubject;
     private EditText mEditTextMessage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,24 +50,23 @@ public class EmailActivity extends AppCompatActivity {
             String userid = getIntent().getStringExtra("userid");
             String wiseoryoung = getIntent().getStringExtra("wiseoryoung");
 
-//
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("users").child(wiseoryoung).child(userid).child("email");
 
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Fix this james....
                     String recipient = dataSnapshot.getValue(String.class);
                     String subject = mEditTextSubject.getText().toString();
                     String message = mEditTextMessage.getText().toString();
                     System.out.println(recipient);
                     Intent intent = new Intent(Intent.ACTION_SENDTO);
-                    intent.setData(Uri.parse("mailto:"));
-                    intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+//                    intent.setData(Uri.parse("mailto:" + recipient));
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
                     intent.putExtra(Intent.EXTRA_SUBJECT, subject);
                     intent.putExtra(Intent.EXTRA_TEXT, message);
 
+                    intent.setType("message/rfc822");
                     startActivity(Intent.createChooser(intent, "Choose an email client"));
                 }
 

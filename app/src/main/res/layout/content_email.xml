@@ -16,7 +16,6 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-
     <TextView
         android:padding="16dp"
         android:layout_width="match_parent"
