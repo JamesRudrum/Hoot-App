@@ -29,7 +29,6 @@ public class EmailActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mEditTextTo = findViewById(R.id.ETemail_to);
         mEditTextSubject = findViewById(R.id.ETemail_subject);
         mEditTextMessage = findViewById(R.id.ETemail_message);
 
