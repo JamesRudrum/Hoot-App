@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EmailActivity extends AppCompatActivity {
 
@@ -41,19 +43,25 @@ public class EmailActivity extends AppCompatActivity {
     }
 
     private void sendMail(){
-        String recipientList = mEditTextTo.getText().toString();
-        String[] recipients =  recipientList.split(",");
-//        String recipient = FirebaseAuth.getInstance()
+        if (getIntent().hasExtra("userid")) {
+            String userid = getIntent().getStringExtra("userid");
+            String wiseoryoung = getIntent().getStringExtra("wiseoryoung");
 
-        String subject = mEditTextSubject.getText().toString();
-        String message = mEditTextMessage.getText().toString();
+//
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("users").child(wiseoryoung).child(userid).child("email");
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+            String recipient = myRef.toString();
+            String subject = mEditTextSubject.getText().toString();
+            String message = mEditTextMessage.getText().toString();
 
-        intent.setType("message/rfc822");
-        startActivity(Intent.createChooser(intent, "Choose an email client"));
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+            intent.putExtra(Intent.EXTRA_TEXT, message);
+
+            intent.setType("message/rfc822");
+            startActivity(Intent.createChooser(intent, "Choose an email client"));
+        }
     }
 }

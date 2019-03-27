@@ -74,6 +74,7 @@ public class RequestContactPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RequestContactPageActivity.this, EmailActivity.class);
                 intent.putExtra("userid", getIntent().getStringExtra("userid"));
+                intent.putExtra("wiseoryoung", getIntent().getStringExtra("wiseoryoung"));
                 startActivity(intent);
             }
         });
