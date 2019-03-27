@@ -20,20 +20,21 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Subject:"
+        android:text="@string/subject"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <EditText
         android:id="@+id/ETemail_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailSubject" />
+        android:inputType="textEmailSubject"
+        android:importantForAutofill="no" />
 
     <TextView
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Message:"
+        android:text="@string/message"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <EditText
@@ -42,13 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|top"
-        android:lines="10" />
+        android:lines="10"
+        android:importantForAutofill="no" />
 
     <Button
         android:padding="16dp"
         android:id="@+id/BTsend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="send" />
+        android:text="@string/send" />
 
 </LinearLayout>

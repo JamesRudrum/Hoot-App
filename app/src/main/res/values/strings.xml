@@ -25,5 +25,10 @@
     <string name="title_activity_chat2">Chat2Activity</string>
     <string name="textview">TextView</string>
     <string name="profileavatarrcpage">ProfileAvatarRCPage</string>
+    <string name="percent">percent</string>
+    <string name="match">match</string>
     <string name="title_activity_email">EmailActivity</string>
+    <string name="subject">Subject:</string>
+    <string name="message">Message:</string>
+    <string name="send">send</string>
 </resources>
