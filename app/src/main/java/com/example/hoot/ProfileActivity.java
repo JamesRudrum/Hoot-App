@@ -63,24 +63,24 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 interestList = new ArrayList<>();
                 if (userIsYoung(dataSnapshot)) {
-                    displayUserDetails(dataSnapshot, "young", "Young");
-                    getAllUserInterests(dataSnapshot, "young");
+                    displayUserDetails(dataSnapshot, "Young", "Young");
+                    getAllUserInterests(dataSnapshot, "Young");
                     addInterestsToView();
 
                 } else if (userIsWise(dataSnapshot)) {
-                    displayUserDetails(dataSnapshot, "wise", "Wise");
-                    getAllUserInterests(dataSnapshot, "wise");
+                    displayUserDetails(dataSnapshot, "Wise", "Wise");
+                    getAllUserInterests(dataSnapshot, "Wise");
                     addInterestsToView();
                 }
 
             }
 
             private boolean userIsWise(@NonNull DataSnapshot dataSnapshot) {
-                return dataSnapshot.child("wise").child(user.getUid()).exists();
+                return dataSnapshot.child("Wise").child(user.getUid()).exists();
             }
 
             private boolean userIsYoung(@NonNull DataSnapshot dataSnapshot) {
-                return dataSnapshot.child("young").child(user.getUid()).exists();
+                return dataSnapshot.child("Young").child(user.getUid()).exists();
             }
 
             private void addInterestsToView() {

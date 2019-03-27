@@ -91,7 +91,7 @@ public class signup extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     String userid = user.getUid();
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
+                                    DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(userid);
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
                                     uploadImage(userid);
@@ -137,7 +137,7 @@ public class signup extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     System.out.println(uri);
-                                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
                                 }
                             });
                         }

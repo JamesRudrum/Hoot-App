@@ -68,8 +68,8 @@ public class InterestsActivity extends AppCompatActivity {
                         mAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = mAuth.getCurrentUser();
                         String userid = user.getUid();
-                        if (dataSnapshot.child("young").child(user.getUid()).exists()) {
-                            DatabaseReference myRef = databaseReference.child("young").child(userid).child("Interests");
+                        if (dataSnapshot.child("Young").child(user.getUid()).exists()) {
+                            DatabaseReference myRef = databaseReference.child("Young").child(userid).child("Interests");
                             if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
                             if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
                             if (RBKnitting.isChecked()) myRef.child("Knitting").setValue("true");
@@ -83,8 +83,8 @@ public class InterestsActivity extends AppCompatActivity {
 
                             startActivity(new Intent(InterestsActivity.this, ProfileActivity.class));
 
-                        } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
-                            DatabaseReference myRef = databaseReference.child("wise").child(userid).child("Interests");
+                        } else if (dataSnapshot.child("Wise").child(user.getUid()).exists()) {
+                            DatabaseReference myRef = databaseReference.child("Wise").child(userid).child("Interests");
                             if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
                             if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
                             if (RBKnitting.isChecked()) myRef.child("Knitting").setValue("true");
