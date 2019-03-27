@@ -29,22 +29,30 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
     public int calculateMatch(List myInterests, List theirInterests) {
          int numberMatchedInterests = 0;
+        for (int i = 0; i < myInterests.size(); i++) {
+            for (int x = 0; x < theirInterests.size(); x++) {
+                if (x == i) {
+                    numberMatchedInterests += 1;
+                }
+            }
+        }
+        return numberMatchedInterests;
+    }
+
+    public int calculatePercentageMatch(List myInterests, List theirInterests) {
+        int numberMatchedInterests = 0;
         System.out.println(myInterests.size());
         System.out.println(theirInterests.size());
         for (int i = 0; i < myInterests.size(); i++) {
             for (int x = 0; x < theirInterests.size(); x++) {
                 if (x == i) {
                     numberMatchedInterests += 1;
-                    System.out.println(numberMatchedInterests);
-                    System.out.println(i);
-                    System.out.println(x);
                 }
             }
         }
-//
-//        float matches = (float) numberMatchedInterests;
-//        percentageMatch = (matches / myInterests.size()) * 100;
-        return numberMatchedInterests;
+        float matches = (float) numberMatchedInterests;
+        percentageMatch = (matches / myInterests.size()) * 100;
+        return Math.round(percentageMatch);
     }
 
 
@@ -52,30 +60,6 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         super(itemView);
         view = itemView;
     }
-
-//
-//public int getMyInterests(final String wiseoryoung, final String userid) {
-//
-//    return calculateMatch(myInterests, theirInterests);
-//}
-
-//public List getTheirInterests(final String wiseoryoung, final String userid) {
-//    DatabaseReference theirRef = FirebaseDatabase.getInstance().getReference("users/");
-////        System.out.println(theirRef);
-//
-//    theirRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//        @Override
-//        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//
-//        @Override
-//        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//        }
-//    });
-//
-//}
-
 
     public void setDetails(final Context ctx, String name, String aboutme, String image, final String userid, final String wiseoryoung){
         TextView nameView = view.findViewById(R.id.feedName);
@@ -92,7 +76,6 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
                     if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CardGames").exists())
                         myInterests.add("Card Games");
-//                    System.out.println("in my interests");
                     if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("BoardGames").exists())
                         myInterests.add("Board Games");
                     if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Puzzles").exists())
@@ -136,38 +119,33 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
                 }
                 theirInterests = new ArrayList<>();
-                System.out.println(dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Films"));
+                System.out.println(dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Films"));
 
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("CardGames").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("CardGames").exists())
                     theirInterests.add("Card Games");
-//                System.out.println("in their interests");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("BoardGames").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("BoardGames").exists())
                     theirInterests.add("Board Games");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Puzzles").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Puzzles").exists())
                     theirInterests.add("Puzzles");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Knitting").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Knitting").exists())
                     theirInterests.add("Knitting");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Music").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Music").exists())
                     theirInterests.add("Music");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Films").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Films").exists())
                     theirInterests.add("Film");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("CurrentAffairs").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("CurrentAffairs").exists())
                     theirInterests.add("Current Affairs");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Photography").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Photography").exists())
                     theirInterests.add("Photography");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Books").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Books").exists())
                     theirInterests.add("Books");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interest").child("Sport").exists())
+                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Sport").exists())
                     theirInterests.add("Sport");
-//                System.out.println(theirInterests);
-//                System.out.println(theirInterests.size());
-//                System.out.println(myInterests);
-//                System.out.println(theirInterests);
+
                 TextView percentageMatchView = view.findViewById(R.id.feedPercentageMatch);
-                percentageMatchView.setText(String.valueOf(calculateMatch(myInterests, theirInterests)));
-                System.out.println(myInterests);
-                System.out.println(theirInterests);
-                System.out.println(calculateMatch(myInterests, theirInterests));
+                TextView matchView = view.findViewById(R.id.feedMatch);
+                matchView.setText("Number of interest matches :" + String.valueOf(calculateMatch(myInterests, theirInterests)));
+                percentageMatchView.setText("Percentage match :" + String.valueOf(calculatePercentageMatch(myInterests, theirInterests)) + "%");
             }
 
             @Override
@@ -177,13 +155,6 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
         });
 
-//        System.out.println(getMyInterests(wiseoryoung, userid));
-
-//        System.out.println(getMyInterests());
-//        System.out.println(getTheirInterests(wiseoryoung, userid));
-//        System.out.println(myInterests.size());
-//        System.out.println(theirInterests);
-//        System.out.println(theirInterests.size());
         BTNViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,7 +168,5 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         nameView.setText(name);
         aboutMeView.setText(aboutme);
         Picasso.get().load(image).into(imageView);
-//        percentageMatchView.setText(getMyInterests(wiseoryoung, userid));
     }
-
 }

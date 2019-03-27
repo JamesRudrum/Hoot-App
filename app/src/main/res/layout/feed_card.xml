@@ -34,12 +34,17 @@
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+        <TextView
+            android:id="@+id/feedMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/percent"
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/feedPercentageMatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/percent"
+            android:text="@string/match"
             android:textSize="20sp" />
         <Button
             android:id="@+id/BTNViewProfile"
