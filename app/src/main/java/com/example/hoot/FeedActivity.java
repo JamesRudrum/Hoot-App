@@ -1,15 +1,12 @@
 package com.example.hoot;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
+
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,8 +45,8 @@ public class FeedActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("young").child(user.getUid()).exists()) {
-                    myRef = database.getReference("users/wise");
+                if (dataSnapshot.child("Young").child(user.getUid()).exists()) {
+                    myRef = database.getReference("users/Wise");
                     final FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity> firebaseRecyclerAdapter =
                             new FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity>(
                                     RecyclerModelActivity.class,
@@ -60,12 +57,12 @@ public class FeedActivity extends AppCompatActivity {
                                 @Override
 
                                 protected void populateViewHolder(ViewHolderActivity ViewHolderActivity, RecyclerModelActivity RecyclerModelActivity, int position) {
-                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey(), "wise");
+                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey(), "Wise");
                                 }
                             };
                     recyclerView.setAdapter(firebaseRecyclerAdapter);
-                } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
-                    myRef = database.getReference("users/young");
+                } else if (dataSnapshot.child("Wise").child(user.getUid()).exists()) {
+                    myRef = database.getReference("users/Young");
                     FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity> firebaseRecyclerAdapter =
                             new FirebaseRecyclerAdapter<RecyclerModelActivity, ViewHolderActivity>(
                                     RecyclerModelActivity.class,
@@ -75,7 +72,7 @@ public class FeedActivity extends AppCompatActivity {
                             ) {
                                 @Override
                                 protected void populateViewHolder(ViewHolderActivity ViewHolderActivity, RecyclerModelActivity RecyclerModelActivity, int position) {
-                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey(), "young");
+                                    ViewHolderActivity.setDetails(FeedActivity.this, RecyclerModelActivity.getName(), RecyclerModelActivity.getAboutme(), RecyclerModelActivity.getImage(), this.getRef(position).getKey(), "Young");
                                 }
                             };
                     recyclerView.setAdapter(firebaseRecyclerAdapter);
