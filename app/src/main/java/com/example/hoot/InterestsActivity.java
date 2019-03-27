@@ -68,31 +68,37 @@ public class InterestsActivity extends AppCompatActivity {
                         mAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = mAuth.getCurrentUser();
                         String userid = user.getUid();
-                        if (dataSnapshot.child("young").child(user.getUid()).exists()) {
-                            DatabaseReference myRef = databaseReference.child("young").child(userid).child("Interests");
-                            if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
+                        if (dataSnapshot.child("Young").child(user.getUid()).exists()) {
+                            DatabaseReference myRef = databaseReference.child("Young").child(userid).child("Interests");
+                            if (RBBoardGames.isChecked())
+                                myRef.child("BoardGames").setValue("true");
                             if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
                             if (RBKnitting.isChecked()) myRef.child("Knitting").setValue("true");
                             if (RBMusic.isChecked()) myRef.child("Music").setValue("true");
                             if (RBFilms.isChecked()) myRef.child("Films").setValue("true");
-                            if (RBCurrentAffairs.isChecked()) myRef.child("CurrentAffairs").setValue("true");
+                            if (RBCurrentAffairs.isChecked())
+                                myRef.child("CurrentAffairs").setValue("true");
                             if (RBCardGames.isChecked()) myRef.child("CardGames").setValue("true");
-                            if (RBPhotography.isChecked()) myRef.child("Photography").setValue("true");
+                            if (RBPhotography.isChecked())
+                                myRef.child("Photography").setValue("true");
                             if (RBBooks.isChecked()) myRef.child("Books").setValue("true");
                             if (RBSport.isChecked()) myRef.child("Sport").setValue("true");
 
                             startActivity(new Intent(InterestsActivity.this, ProfileActivity.class));
 
-                        } else if (dataSnapshot.child("wise").child(user.getUid()).exists()) {
-                            DatabaseReference myRef = databaseReference.child("wise").child(userid).child("Interests");
-                            if (RBBoardGames.isChecked()) myRef.child("BoardGames").setValue("true");
+                        } else if (dataSnapshot.child("Wise").child(user.getUid()).exists()) {
+                            DatabaseReference myRef = databaseReference.child("Wise").child(userid).child("Interests");
+                            if (RBBoardGames.isChecked())
+                                myRef.child("BoardGames").setValue("true");
                             if (RBPuzzles.isChecked()) myRef.child("Puzzles").setValue("true");
                             if (RBKnitting.isChecked()) myRef.child("Knitting").setValue("true");
                             if (RBMusic.isChecked()) myRef.child("Music").setValue("true");
                             if (RBFilms.isChecked()) myRef.child("Films").setValue("true");
-                            if (RBCurrentAffairs.isChecked()) myRef.child("CurrentAffairs").setValue("true");
+                            if (RBCurrentAffairs.isChecked())
+                                myRef.child("CurrentAffairs").setValue("true");
                             if (RBCardGames.isChecked()) myRef.child("CardGames").setValue("true");
-                            if (RBPhotography.isChecked()) myRef.child("Photography").setValue("true");
+                            if (RBPhotography.isChecked())
+                                myRef.child("Photography").setValue("true");
                             if (RBBooks.isChecked()) myRef.child("Books").setValue("true");
                             if (RBSport.isChecked()) myRef.child("Sport").setValue("true");
                             startActivity(new Intent(InterestsActivity.this, ProfileActivity.class));
@@ -110,18 +116,6 @@ public class InterestsActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
 }

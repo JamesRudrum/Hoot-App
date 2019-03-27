@@ -1,5 +1,6 @@
 package com.example.hoot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -48,7 +49,6 @@ public class RequestContactPageActivity extends AppCompatActivity {
         if (getIntent().hasExtra("userid")) {
             String userid = getIntent().getStringExtra("userid");
             String wiseoryoung = getIntent().getStringExtra("wiseoryoung");
-            System.out.println(userid);
 
             databaseReference = FirebaseDatabase.getInstance().getReference("users/" + wiseoryoung + "/" + userid);
 
@@ -104,14 +104,17 @@ public class RequestContactPageActivity extends AppCompatActivity {
             });
 
         }
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+        FloatingActionButton fab = findViewById(R.id.FABchatButtonRCPage);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RequestContactPageActivity.this, EmailActivity.class);
+                intent.putExtra("userid", getIntent().getStringExtra("userid"));
+                intent.putExtra("wiseoryoung", getIntent().getStringExtra("wiseoryoung"));
+                startActivity(intent);
+            }
+        });
 
 
     }

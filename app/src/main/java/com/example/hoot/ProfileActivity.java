@@ -27,15 +27,11 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView IVprofilePagePicture;
     private TextView TVprofileWiseOrYoung;
     private TextView TVprofilePageName;
-    private TextView TVaboutMeTitle;
     private TextView TVAboutMeProfile;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private StorageReference profileImageStorageReference;
     private TextView TVinterestsListProfilePage;
     private List<String> interestList;
-    private TextView TVMyInterests;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +42,11 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();;
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
-        profileImageStorageReference = FirebaseStorage.getInstance().getReference("images").child(user.getUid());
         IVprofilePagePicture = findViewById(R.id.IVprofilePagePicture);
         TVprofileWiseOrYoung = findViewById(R.id.TVprofileWiseOrYoung);
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
-        TVaboutMeTitle = findViewById(R.id.TVaboutMeTitle);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
-        TVMyInterests = findViewById(R.id.TVMyInterests);
-
-        GlideApp.with(ProfileActivity.this).load(profileImageStorageReference).into(IVprofilePagePicture);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             FirebaseUser user = mAuth.getCurrentUser();
@@ -63,24 +54,30 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 interestList = new ArrayList<>();
                 if (userIsYoung(dataSnapshot)) {
-                    displayUserDetails(dataSnapshot, "young", "Young");
-                    getAllUserInterests(dataSnapshot, "young");
+                    displayUserDetails(dataSnapshot, "Young", "Young");
+                    getAllUserInterests(dataSnapshot, "Young");
                     addInterestsToView();
+                    ProfileImage(dataSnapshot, "Young");
 
                 } else if (userIsWise(dataSnapshot)) {
-                    displayUserDetails(dataSnapshot, "wise", "Wise");
-                    getAllUserInterests(dataSnapshot, "wise");
+                    displayUserDetails(dataSnapshot, "Wise", "Wise");
+                    getAllUserInterests(dataSnapshot, "Wise");
                     addInterestsToView();
+                    ProfileImage(dataSnapshot, "Wise");
                 }
+            }
 
+            private void ProfileImage(@NonNull DataSnapshot dataSnapshot, String accounttype) {
+                    String image = dataSnapshot.child(accounttype).child(user.getUid()).child("image").getValue(String.class);
+                    GlideApp.with(ProfileActivity.this).load(image).into(IVprofilePagePicture);
             }
 
             private boolean userIsWise(@NonNull DataSnapshot dataSnapshot) {
-                return dataSnapshot.child("wise").child(user.getUid()).exists();
+                return dataSnapshot.child("Wise").child(user.getUid()).exists();
             }
 
             private boolean userIsYoung(@NonNull DataSnapshot dataSnapshot) {
-                return dataSnapshot.child("young").child(user.getUid()).exists();
+                return dataSnapshot.child("Young").child(user.getUid()).exists();
             }
 
             private void addInterestsToView() {
