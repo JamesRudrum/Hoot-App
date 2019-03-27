@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class EmailActivity extends AppCompatActivity {
 
     private EditText mEditTextTo;
@@ -19,6 +21,7 @@ public class EmailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println(getIntent().getStringExtra("userid"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -40,6 +43,7 @@ public class EmailActivity extends AppCompatActivity {
     private void sendMail(){
         String recipientList = mEditTextTo.getText().toString();
         String[] recipients =  recipientList.split(",");
+//        String recipient = FirebaseAuth.getInstance()
 
         String subject = mEditTextSubject.getText().toString();
         String message = mEditTextMessage.getText().toString();

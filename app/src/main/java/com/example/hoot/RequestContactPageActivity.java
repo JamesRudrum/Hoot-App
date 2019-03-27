@@ -43,7 +43,6 @@ public class RequestContactPageActivity extends AppCompatActivity {
         if (getIntent().hasExtra("userid")) {
             String userid = getIntent().getStringExtra("userid");
             String wiseoryoung = getIntent().getStringExtra("wiseoryoung");
-            System.out.println(userid);
 
             databaseReference = FirebaseDatabase.getInstance().getReference("users/" + wiseoryoung + "/" + userid);
 
@@ -73,8 +72,8 @@ public class RequestContactPageActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RequestContactPageActivity.this, Chat2Activity.class));
-//                Intent intent = new Intent(, );;
+                Intent intent = new Intent(RequestContactPageActivity.this, EmailActivity.class);
+                intent.putExtra("userid", getIntent().getStringExtra("userid"));
             }
         });
 
