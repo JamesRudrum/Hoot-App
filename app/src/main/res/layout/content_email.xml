@@ -16,19 +16,6 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <TextView
-        android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="To:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <EditText
-        android:padding="16dp"
-        android:id="@+id/ETemail_to"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress" />
 
     <TextView
         android:padding="16dp"
