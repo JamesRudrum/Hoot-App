@@ -31,10 +31,11 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView TVAboutMeProfile;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private StorageReference profileImageStorageReference;
+    private StorageReference DefaultYoungImageStorageReference;
     private TextView TVinterestsListProfilePage;
     private List<String> interestList;
     private TextView TVMyInterests;
+    private StorageReference DefaultWiseImageStorageReference;
 
 
     @Override
@@ -46,7 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();;
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
-        profileImageStorageReference = FirebaseStorage.getInstance().getReference("images").child(user.getUid());
+        DefaultYoungImageStorageReference = FirebaseStorage.getInstance().getReference("DefaultImages").child("YoungOwlImage");
+        DefaultWiseImageStorageReference = FirebaseStorage.getInstance().getReference("DefaultImages").child("WiseOwlImage");
         IVprofilePagePicture = findViewById(R.id.IVprofilePagePicture);
         TVprofileWiseOrYoung = findViewById(R.id.TVprofileWiseOrYoung);
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
@@ -55,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
         TVMyInterests = findViewById(R.id.TVMyInterests);
 
-        GlideApp.with(ProfileActivity.this).load(profileImageStorageReference).into(IVprofilePagePicture);
+//        GlideApp.with(ProfileActivity.this).load(profileImageStorageReference).into(IVprofilePagePicture);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             FirebaseUser user = mAuth.getCurrentUser();
@@ -66,11 +68,23 @@ public class ProfileActivity extends AppCompatActivity {
                     displayUserDetails(dataSnapshot, "Young", "Young");
                     getAllUserInterests(dataSnapshot, "Young");
                     addInterestsToView();
+                    if (dataSnapshot.child("Young").child(user.getUid()).child("image").exists()) {
+                        String image = dataSnapshot.child("Young").child(user.getUid()).child("image").getValue(String.class);
+                        GlideApp.with(ProfileActivity.this).load(image).into(IVprofilePagePicture);
+                    } else {
+                        GlideApp.with(ProfileActivity.this).load(DefaultYoungImageStorageReference).into(IVprofilePagePicture);
+                    }
 
                 } else if (userIsWise(dataSnapshot)) {
                     displayUserDetails(dataSnapshot, "Wise", "Wise");
                     getAllUserInterests(dataSnapshot, "Wise");
                     addInterestsToView();
+                    if (dataSnapshot.child("Wise").child(user.getUid()).child("image").exists()) {
+                        String image = dataSnapshot.child("Wise").child(user.getUid()).child("image").getValue(String.class);
+                        GlideApp.with(ProfileActivity.this).load(image).into(IVprofilePagePicture);
+                    } else {
+                        GlideApp.with(ProfileActivity.this).load(DefaultWiseImageStorageReference).into(IVprofilePagePicture);
+                    }
                 }
 
             }
