@@ -62,7 +62,7 @@ public class EmailActivity extends AppCompatActivity {
                     System.out.println(recipient);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
-                    intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Message from Hoot!: " + subject);
                     intent.putExtra(Intent.EXTRA_TEXT, message);
 
                     intent.setType("message/rfc822");
