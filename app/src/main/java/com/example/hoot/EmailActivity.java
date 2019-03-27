@@ -58,6 +58,7 @@ public class EmailActivity extends AppCompatActivity {
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Fix this james....
                     String recipient = dataSnapshot.getValue(String.class);
                     String subject = mEditTextSubject.getText().toString();
                     String message = mEditTextMessage.getText().toString();
