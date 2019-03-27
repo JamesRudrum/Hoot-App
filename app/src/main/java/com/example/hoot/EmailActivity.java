@@ -60,8 +60,7 @@ public class EmailActivity extends AppCompatActivity {
                     String subject = mEditTextSubject.getText().toString();
                     String message = mEditTextMessage.getText().toString();
                     System.out.println(recipient);
-                    Intent intent = new Intent(Intent.ACTION_SENDTO);
-//                    intent.setData(Uri.parse("mailto:" + recipient));
+                    Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
                     intent.putExtra(Intent.EXTRA_SUBJECT, subject);
                     intent.putExtra(Intent.EXTRA_TEXT, message);
@@ -78,5 +77,7 @@ public class EmailActivity extends AppCompatActivity {
 
 
         }
+        startActivity(new Intent(EmailActivity.this, FeedActivity.class));
+
     }
 }
