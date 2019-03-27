@@ -27,124 +27,140 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
     public List<String> theirInterests;
     public List<String> myInterests;
     public Float percentageMatch;
-    public Float numberMatchedInterests;
 
-    public Float calculateMatch(List myInterests, List theirInterests) {
-
-        for (Object myInterest : myInterests) {
-            for (Object theirInterest : theirInterests) {
-                if (myInterest == theirInterest) {
+    public int calculateMatch(List myInterests, List theirInterests) {
+         int numberMatchedInterests = 0;
+        for (int i = 0; i < myInterests.size(); i++) {
+            for (int x = 0; x < theirInterests.size(); x++) {
+                if (x == i) {
                     numberMatchedInterests += 1;
                 }
             }
         }
-
-        percentageMatch = (numberMatchedInterests / myInterests.size()) * 100;
-        return percentageMatch;
+//
+//        float matches = (float) numberMatchedInterests;
+//        percentageMatch = (matches / myInterests.size()) * 100;
+        return numberMatchedInterests;
     }
-
-    public void getInterests(String wiseoryoung, String userid) {
-        DatabaseReference theirRef = FirebaseDatabase.getInstance().getReference("users/" + wiseoryoung + "/" + userid + "/interests");
-
-        theirRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("CardGames").exists())
-                    theirInterests.add("Card Games");
-                System.out.println("in their interests");
-                if (dataSnapshot.child("BoardGames").exists())
-                    theirInterests.add("Board Games");
-                if (dataSnapshot.child("Puzzles").exists())
-                    theirInterests.add("Puzzles");
-                if (dataSnapshot.child("Knitting").exists())
-                    theirInterests.add("Knitting");
-                if (dataSnapshot.child("Music").exists())
-                    theirInterests.add("Music");
-                if (dataSnapshot.child("Films").exists())
-                    theirInterests.add("Film");
-                if (dataSnapshot.child("CurrentAffairs").exists())
-                    theirInterests.add("Current Affairs");
-                if (dataSnapshot.child("Photography").exists())
-                    theirInterests.add("Photography");
-                if (dataSnapshot.child("Books").exists())
-                    theirInterests.add("Books");
-                if (dataSnapshot.child("Sport").exists())
-                    theirInterests.add("Sport");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("users/");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).exists()) {
-
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("CardGames").exists())
-                        myInterests.add("Card Games");
-                    System.out.println("in my interests");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("BoardGames").exists())
-                        myInterests.add("Board Games");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Puzzles").exists())
-                        myInterests.add("Puzzles");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Knitting").exists())
-                        myInterests.add("Knitting");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Music").exists())
-                        myInterests.add("Music");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Films").exists())
-                        myInterests.add("Film");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("CurrentAffairs").exists())
-                        myInterests.add("Current Affairs");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Photography").exists())
-                        myInterests.add("Photography");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Books").exists())
-                        myInterests.add("Books");
-                    if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Sport").exists())
-                        myInterests.add("Sport");
-                } else {
-
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("CardGames").exists())
-                        myInterests.add("Card Games");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("BoardGames").exists())
-                        myInterests.add("Board Games");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Puzzles").exists())
-                        myInterests.add("Puzzles");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Knitting").exists())
-                        myInterests.add("Knitting");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Music").exists())
-                        myInterests.add("Music");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Films").exists())
-                        myInterests.add("Film");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("CurrentAffairs").exists())
-                        myInterests.add("Current Affairs");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Photography").exists())
-                        myInterests.add("Photography");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Books").exists())
-                        myInterests.add("Books");
-                    if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("interests").child("Sport").exists())
-                        myInterests.add("Sport");
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    };
-
-
 
 
     public ViewHolderActivity(View itemView) {
         super(itemView);
         view = itemView;
     }
+
+
+public List getMyInterests() {
+    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("users/");
+    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            myInterests = new ArrayList<>();
+            if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).exists()) {
+
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CardGames").exists())
+                    myInterests.add("Card Games");
+//                    System.out.println("in my interests");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("BoardGames").exists())
+                    myInterests.add("Board Games");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Puzzles").exists())
+                    myInterests.add("Puzzles");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Knitting").exists())
+                    myInterests.add("Knitting");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Music").exists())
+                    myInterests.add("Music");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Films").exists())
+                    myInterests.add("Film");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CurrentAffairs").exists())
+                    myInterests.add("Current Affairs");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Photography").exists())
+                    myInterests.add("Photography");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Books").exists())
+                    myInterests.add("Books");
+                if (dataSnapshot.child("young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Sport").exists())
+                    myInterests.add("Sport");
+            } else {
+
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CardGames").exists())
+                    myInterests.add("Card Games");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("BoardGames").exists())
+                    myInterests.add("Board Games");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Puzzles").exists())
+                    myInterests.add("Puzzles");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Knitting").exists())
+                    myInterests.add("Knitting");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Music").exists())
+                    myInterests.add("Music");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Films").exists())
+                    myInterests.add("Film");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CurrentAffairs").exists())
+                    myInterests.add("Current Affairs");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Photography").exists())
+                    myInterests.add("Photography");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Books").exists())
+                    myInterests.add("Books");
+                if (dataSnapshot.child("wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Sport").exists())
+                    myInterests.add("Sport");
+
+
+            }
+//                System.out.println(myInterests);
+//                    System.out.println(myInterests.size());
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    });
+   return myInterests;
+}
+
+public List getTheirInterests(String wiseoryoung, String userid) {
+    DatabaseReference theirRef = FirebaseDatabase.getInstance().getReference("users/" + wiseoryoung + "/" + userid + "/Interests");
+//        System.out.println(theirRef);
+
+    theirRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            theirInterests = new ArrayList<>();
+            if (dataSnapshot.child("CardGames").exists())
+                theirInterests.add("Card Games");
+//                System.out.println("in their interests");
+//                System.out.println(dataSnapshot.child("Films").exists());
+            if (dataSnapshot.child("BoardGames").exists())
+                theirInterests.add("Board Games");
+            if (dataSnapshot.child("Puzzles").exists())
+                theirInterests.add("Puzzles");
+            if (dataSnapshot.child("Knitting").exists())
+                theirInterests.add("Knitting");
+            if (dataSnapshot.child("Music").exists())
+                theirInterests.add("Music");
+            if (dataSnapshot.child("Films").exists())
+                theirInterests.add("Film");
+            if (dataSnapshot.child("CurrentAffairs").exists())
+                theirInterests.add("Current Affairs");
+            if (dataSnapshot.child("Photography").exists())
+                theirInterests.add("Photography");
+            if (dataSnapshot.child("Books").exists())
+                theirInterests.add("Books");
+            if (dataSnapshot.child("Sport").exists())
+                theirInterests.add("Sport");
+//                System.out.println(theirInterests);
+//                System.out.println(theirInterests.size());
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    });
+return theirInterests;
+
+}
+
+
 
     public void setDetails(final Context ctx, String name, String aboutme, String image, final String userid, final String wiseoryoung){
         TextView nameView = view.findViewById(R.id.feedName);
@@ -153,11 +169,14 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         Button BTNViewProfile = view.findViewById(R.id.BTNViewProfile);
         TextView percentageMatchView = view.findViewById(R.id.feedPercentageMatch);
 
-        getInterests(wiseoryoung, userid);
+
+
+
 
         System.out.println(myInterests);
-        System.out.println(theirInterests);
-
+//        System.out.println(myInterests.size());
+//        System.out.println(theirInterests);
+//        System.out.println(theirInterests.size());
         BTNViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,7 +190,7 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         nameView.setText(name);
         aboutMeView.setText(aboutme);
         Picasso.get().load(image).into(imageView);
-//        percentageMatchView.setText(String.valueOf(calculateMatch(myInterests, theirInterests)));
+        percentageMatchView.setText(calculateMatch(getMyInterests(), getTheirInterests(wiseoryoung, userid)));
     }
 
 }
