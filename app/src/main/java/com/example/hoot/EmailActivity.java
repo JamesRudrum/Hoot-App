@@ -1,7 +1,9 @@
 package com.example.hoot;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EmailActivity extends AppCompatActivity {
 
@@ -50,17 +55,29 @@ public class EmailActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("users").child(wiseoryoung).child(userid).child("email");
 
-            String recipient = myRef.toString();
-            String subject = mEditTextSubject.getText().toString();
-            String message = mEditTextMessage.getText().toString();
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String recipient = dataSnapshot.getValue(String.class);
+                    String subject = mEditTextSubject.getText().toString();
+                    String message = mEditTextMessage.getText().toString();
+                    System.out.println(recipient);
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:"));
+                    intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    intent.putExtra(Intent.EXTRA_TEXT, message);
 
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.putExtra(Intent.EXTRA_EMAIL, recipient);
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-            intent.putExtra(Intent.EXTRA_TEXT, message);
+                    startActivity(Intent.createChooser(intent, "Choose an email client"));
+                }
 
-            intent.setType("message/rfc822");
-            startActivity(Intent.createChooser(intent, "Choose an email client"));
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
         }
     }
 }
