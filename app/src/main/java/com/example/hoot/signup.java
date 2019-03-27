@@ -91,7 +91,9 @@ public class signup extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     String userid = user.getUid();
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(userid);
+
+                                    DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
+                                    myRef.child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
                                     uploadImage(userid);
