@@ -156,6 +156,25 @@ public class signup extends AppCompatActivity {
                         }
                     });
         }
+        else if (SWaccounttype.isChecked()) {
+            storageReference.child("DefaultImages").child("WiseOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                }
+            });
+        }
+        else {
+            storageReference.child("DefaultImages").child("YoungOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+
+                }
+            });
+
+
+        }
     }
 
 }
