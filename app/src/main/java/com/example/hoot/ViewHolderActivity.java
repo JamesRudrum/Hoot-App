@@ -37,6 +37,6 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
         nameView.setText(name);
         aboutMeView.setText(aboutme);
-        Picasso.get().load(image).into(imageView);
+        GlideApp.with(ctx).load(image).into(imageView);
     }
 }

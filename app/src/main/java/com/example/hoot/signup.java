@@ -91,6 +91,7 @@ public class signup extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     String userid = user.getUid();
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
+
                                     DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(userid);
                                     myRef.child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
@@ -138,7 +139,7 @@ public class signup extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     System.out.println(uri);
-                                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "wise" : "young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
                                 }
                             });
                         }
@@ -156,6 +157,25 @@ public class signup extends AppCompatActivity {
                                     .getTotalByteCount());
                         }
                     });
+        }
+        else if (SWaccounttype.isChecked()) {
+            storageReference.child("DefaultImages").child("WiseOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                }
+            });
+        }
+        else {
+            storageReference.child("DefaultImages").child("YoungOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+
+                }
+            });
+
+
         }
     }
 
