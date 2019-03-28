@@ -46,6 +46,8 @@
             android:id="@+id/BTNLogoutRCP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+
             android:layout_gravity="end"
             app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
     </android.support.v7.widget.Toolbar>
