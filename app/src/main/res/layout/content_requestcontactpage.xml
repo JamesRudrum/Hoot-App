@@ -15,7 +15,29 @@
         android:background="?attr/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+
+        ><ImageButton
+            android:id="@+id/BTNProfileRCP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+        ><ImageButton
+            android:id="@+id/BTNFeedRCP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_people_black_24dp" />
+
+        ><ImageButton
+            android:id="@+id/BTNLogoutRCP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
+    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:id="@+id/IVpictureRCPage"
