@@ -177,7 +177,7 @@ public class signup extends AppCompatActivity {
                     });
         }
         else if (RBwise.isChecked()) {
-            storageReference.child("DefaultImages").child("WiseOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            storageReference.child("DefaultImages").child("WiseOwlImage.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
@@ -185,7 +185,7 @@ public class signup extends AppCompatActivity {
             });
         }
         else {
-            storageReference.child("DefaultImages").child("YoungOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            storageReference.child("DefaultImages").child("YoungOwlImage.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
