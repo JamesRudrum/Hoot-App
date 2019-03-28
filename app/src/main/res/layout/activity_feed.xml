@@ -14,14 +14,17 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay"
 
-        ><ImageButton
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"
-            android:tint="@color/colorPrimaryDark"
+        >
+
+        <ImageButton
             android:id="@+id/BTNProfileFeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:background="@color/colorPrimary"
+            android:cropToPadding="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:tint="@color/colorPrimaryDark"
             app:srcCompat="@drawable/ic_person_black_24dp" />
 
         ><ImageButton
@@ -42,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
             app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
     </android.support.v7.widget.Toolbar>
 
