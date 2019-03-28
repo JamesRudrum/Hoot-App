@@ -39,7 +39,6 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton BTNProfileProfile;
     private ImageButton BTNFeedProfile;
     private ImageButton BTNLogoutProfile;
-    private Button BTNsignout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +54,6 @@ public class ProfileActivity extends AppCompatActivity {
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
-        BTNsignout = findViewById(R.id.BTNsignout);
-
-        BTNsignout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-
-            }
-        });
 
         BTNProfileProfile = findViewById(R.id.BTNProfileProfile);
         BTNProfileProfile.setOnClickListener(new View.OnClickListener() {
