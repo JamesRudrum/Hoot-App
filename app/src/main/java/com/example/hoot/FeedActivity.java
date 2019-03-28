@@ -62,8 +62,8 @@ public class FeedActivity extends AppCompatActivity {
         BTNLogoutFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(FeedActivity.this, FeedActivity.class));
-
+            mAuth.signOut();
+            startActivity(new Intent(FeedActivity.this, MainActivity.class));
             }
         });
 
