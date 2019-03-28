@@ -15,7 +15,8 @@
         android:background="?attr/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:label="@string/app_name" />
 
     <ImageView
         android:id="@+id/IVpictureRCPage"
