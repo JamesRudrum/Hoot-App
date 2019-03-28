@@ -15,6 +15,9 @@
         app:popupTheme="@style/AppTheme.PopupOverlay"
 
         ><ImageButton
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
+            android:tint="@color/colorPrimaryDark"
             android:id="@+id/BTNProfileFeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,6 +25,9 @@
             app:srcCompat="@drawable/ic_person_black_24dp" />
 
         ><ImageButton
+            android:tint="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNFeedFeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +35,9 @@
             app:srcCompat="@drawable/ic_people_black_24dp" />
 
         ><ImageButton
+            android:tint="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNLogoutFeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
