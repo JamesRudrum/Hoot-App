@@ -30,7 +30,7 @@ public class RequestContactPageActivity extends AppCompatActivity {
     private ImageView IVpictureRCPage;
     private TextView TVprofileNameRCPage;
     private TextView TVwiseOrYoungRCPage;
-    private TextView TVaboutMeTitleRCPage;
+    private TextView TVAboutMeRCPage;
     private DatabaseReference databaseReference;
     private TextView ETinteretsListRCPage;
     private List<String> interestList;
@@ -47,7 +47,7 @@ public class RequestContactPageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TVprofileNameRCPage = findViewById(R.id.TVprofileNameRCPage);
-        TVaboutMeTitleRCPage = findViewById(R.id.TVaboutMeTitleRCPage);
+        TVAboutMeRCPage = findViewById(R.id.TVAboutMeRCPage);
         TVwiseOrYoungRCPage = findViewById(R.id.TVwiseOrYoungRCPage);
         IVpictureRCPage = findViewById(R.id.IVpictureRCPage);
         ETinteretsListRCPage = findViewById(R.id.ETinteretsListRCPage);
@@ -95,7 +95,7 @@ public class RequestContactPageActivity extends AppCompatActivity {
                     String image = dataSnapshot.child("image").getValue(String.class);
                     String wiseoryoung = getIntent().getStringExtra("wiseoryoung");
                     TVprofileNameRCPage.setText(name);
-                    TVaboutMeTitleRCPage.setText(aboutMe);
+                    TVAboutMeRCPage.setText(aboutMe);
                     TVwiseOrYoungRCPage.setText(wiseoryoung);
                     getAllUserInterests(dataSnapshot);
                     addInterestsToView();
