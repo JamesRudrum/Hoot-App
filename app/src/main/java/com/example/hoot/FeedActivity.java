@@ -1,6 +1,7 @@
 package com.example.hoot;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
@@ -8,6 +9,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageButton;
 
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -26,12 +29,46 @@ public class FeedActivity extends AppCompatActivity {
     DatabaseReference myRef;
     FirebaseAuth mAuth;
 
+    private ImageButton BTNProfileFeed;
+    private ImageButton BTNFeedFeed;
+    private ImageButton BTNLogoutFeed;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        ActionBar actionBar = getSupportActionBar();
+
+        BTNProfileFeed = findViewById(R.id.BTNProfileFeed);
+        BTNProfileFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FeedActivity.this, ProfileActivity.class));
+            }
+        });
+
+        BTNFeedFeed = findViewById(R.id.BTNFeedFeed);
+                BTNFeedFeed.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(FeedActivity.this, FeedActivity.class));
+
+                    }
+                });
+
+        BTNLogoutFeed = findViewById(R.id.BTNLogoutFeed);
+        BTNLogoutFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(FeedActivity.this, FeedActivity.class));
+
+            }
+        });
+
+
+//        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setTitle("Feed");
 
         recyclerView = findViewById(R.id.recyclerView);
