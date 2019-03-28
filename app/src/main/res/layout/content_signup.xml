@@ -134,6 +134,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/profile_picture"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/BTNsignup"
         app:layout_constraintEnd_toStartOf="@+id/BTNchooseImageSignUp"
         app:layout_constraintStart_toStartOf="parent"
