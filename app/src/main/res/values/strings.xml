@@ -31,6 +31,10 @@
     <string name="subject">Subject:</string>
     <string name="message">Message:</string>
     <string name="send">send</string>
+
+    <string name="Wise">Wise</string>
+    <string name="Young">Young</string>
+
     <string name="profileavatarprofilepage">profileAvatarProfilePage</string>
     <string name="my_interests">My Interests</string>
     <string name="login">Login</string>
@@ -48,4 +52,5 @@
     <string name="puzzles">Puzzles</string>
     <string name="sport">Sport</string>
     <string name="submit">Submit</string>
+
 </resources>

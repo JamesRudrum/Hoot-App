@@ -45,6 +45,7 @@ public class InterestsActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.ETaboutme)).perform(typeText("Bob's here"));
         Espresso.closeSoftKeyboard();
+        onView(withId(R.id.RByoung)).perform(click());
         Intent resultData = new Intent();
         intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
@@ -76,7 +77,7 @@ public class InterestsActivityTest {
         onView(withId(R.id.TVprofileWiseOrYoung)).check(matches(withText(containsString("Young"))));
         onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("Bob's here"))));
         onView(withId(R.id.TVMyInterests)).check(matches(withText(containsString("My Interests"))));
-        onView(withId(R.id.TVinterestsListProfilePage)).check(matches(withText(containsString("Card Games\nBoard Games\nPuzzles\nKnitting\nMusic\nFilms\nCurrent Affairs\nPhotography\nBooks\nSport\n"))));
+        onView(withId(R.id.TVinterestsListProfilePage)).check(matches(withText(containsString("Board Games\nBooks\nCard Games\nCurrent Affairs\nFilms\nKnitting\nMusic\nPhotography\nPuzzles\nSport\n"))));
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();

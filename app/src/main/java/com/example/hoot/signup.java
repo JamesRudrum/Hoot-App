@@ -9,7 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import android.widget.RadioButton;
+
 import android.widget.ImageButton;
+
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -38,7 +42,8 @@ public class signup extends AppCompatActivity {
     private EditText ETfirstname;
     private EditText ETpassword;
     private FirebaseAuth mAuth;
-    private Switch SWaccounttype;
+    private RadioButton RBwise;
+    private RadioButton RByoung;
     private EditText ETaboutme;
     private Button BTNchooseImageSignUp;
     private Uri filePath;
@@ -54,12 +59,6 @@ public class signup extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
 
         BTNsignup = findViewById(R.id.BTNsignup);
         BTNsignin = findViewById(R.id.BTNsignin);
@@ -67,10 +66,11 @@ public class signup extends AppCompatActivity {
         ETemail = findViewById(R.id.ETemail);
         ETpassword = findViewById(R.id.ETpassword);
         ETaboutme = findViewById(R.id.ETaboutme);
-        SWaccounttype = findViewById(R.id.SWaccounttype);
         BTNchooseImageSignUp = findViewById(R.id.BTNchooseImageSignUp);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        RBwise = findViewById(R.id.RBwise);
+        RByoung = findViewById(R.id.RByoung);
 
         BTNsignin = findViewById(R.id.BTNsignin);
         BTNsignin.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +103,7 @@ public class signup extends AppCompatActivity {
                                     String userid = user.getUid();
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                                    DatabaseReference myRef = database.getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(userid);
+                                    DatabaseReference myRef = database.getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(userid);
                                     myRef.child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                                     myRef.child("name").setValue(ETfirstname.getText().toString());
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
@@ -150,7 +150,7 @@ public class signup extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     System.out.println(uri);
-                                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                                    FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
                                 }
                             });
                         }
@@ -169,11 +169,11 @@ public class signup extends AppCompatActivity {
                         }
                     });
         }
-        else if (SWaccounttype.isChecked()) {
+        else if (RBwise.isChecked()) {
             storageReference.child("DefaultImages").child("WiseOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                    FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
                 }
             });
         }
@@ -181,7 +181,7 @@ public class signup extends AppCompatActivity {
             storageReference.child("DefaultImages").child("YoungOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    FirebaseDatabase.getInstance().getReference().child("users").child(SWaccounttype.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
+                    FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
 
                 }
             });

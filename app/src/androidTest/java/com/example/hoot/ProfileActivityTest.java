@@ -43,6 +43,7 @@ public class ProfileActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.ETaboutme)).perform(typeText("I am the queen of everything"));
         Espresso.closeSoftKeyboard();
+        onView(withId(R.id.RByoung)).perform(click());
         Intent resultData = new Intent();
         intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
@@ -63,7 +64,7 @@ public class ProfileActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.ETaboutme)).perform(typeText("I am also the queen of everything"));
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SWaccounttype)).perform(click());
+        onView(withId(R.id.RBwise)).perform(click());
         Intent resultData = new Intent();
         intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
                 hasType(is("image/*"))));
