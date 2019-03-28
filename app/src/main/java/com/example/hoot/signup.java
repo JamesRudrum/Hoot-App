@@ -51,6 +51,13 @@ public class signup extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
+    public static String capitalise(String value) {
+
+        char[] array = value.toCharArray();
+        array[0] = Character.toUpperCase(array[0]);
+        return new String(array);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +112,7 @@ public class signup extends AppCompatActivity {
 
                                     DatabaseReference myRef = database.getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(userid);
                                     myRef.child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                                    myRef.child("name").setValue(ETfirstname.getText().toString());
+                                    myRef.child("name").setValue(capitalise(ETfirstname.getText().toString()));
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
                                     uploadImage(userid);
                                     startActivity(new Intent(signup.this, InterestsActivity.class));
