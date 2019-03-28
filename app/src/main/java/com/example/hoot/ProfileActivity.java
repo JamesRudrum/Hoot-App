@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,8 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private TextView TVinterestsListProfilePage;
     private List<String> interestList;
-    private Button BTNsignout;
-
+    private ImageButton BTNProfileProfile;
+    private ImageButton BTNFeedProfile;
+    private ImageButton BTNLogoutProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +54,30 @@ public class ProfileActivity extends AppCompatActivity {
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
-        BTNsignout = findViewById(R.id.BTNsignout);
 
-        BTNsignout.setOnClickListener(new View.OnClickListener() {
+        BTNProfileProfile = findViewById(R.id.BTNProfileProfile);
+        BTNProfileProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
+            }
+        });
+
+        BTNFeedProfile = findViewById(R.id.BTNFeedProfile);
+        BTNFeedProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, FeedActivity.class));
+
+            }
+        });
+
+        BTNLogoutProfile = findViewById(R.id.BTNLogoutProfile);
+        BTNLogoutProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
                 startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-
             }
         });
 
