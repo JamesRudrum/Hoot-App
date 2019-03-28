@@ -51,6 +51,13 @@ public class signup extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
+    public static String capitalise(String value) {
+
+        char[] array = value.toCharArray();
+        array[0] = Character.toUpperCase(array[0]);
+        return new String(array);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +112,7 @@ public class signup extends AppCompatActivity {
 
                                     DatabaseReference myRef = database.getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(userid);
                                     myRef.child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                                    myRef.child("name").setValue(ETfirstname.getText().toString());
+                                    myRef.child("name").setValue(capitalise(ETfirstname.getText().toString()));
                                     myRef.child("aboutme").setValue(ETaboutme.getText().toString());
                                     uploadImage(userid);
                                     startActivity(new Intent(signup.this, InterestsActivity.class));
@@ -170,7 +177,7 @@ public class signup extends AppCompatActivity {
                     });
         }
         else if (RBwise.isChecked()) {
-            storageReference.child("DefaultImages").child("WiseOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            storageReference.child("DefaultImages").child("WiseOwlImage.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
@@ -178,7 +185,7 @@ public class signup extends AppCompatActivity {
             });
         }
         else {
-            storageReference.child("DefaultImages").child("YoungOwlImage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            storageReference.child("DefaultImages").child("YoungOwlImage.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     FirebaseDatabase.getInstance().getReference().child("users").child(RBwise.isChecked() ? "Wise" : "Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("image").setValue(uri.toString());
