@@ -87,65 +87,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ETpassword" />
 
-    <Switch
-        android:id="@+id/SWaccounttype"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/wise"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/ETaboutme"
-        app:layout_constraintVertical_bias="0.008"
-        tools:text="Young" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/account_type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.279"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETaboutme" />
 
     <Button
         android:id="@+id/BTNchooseImageSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
+        android:layout_marginStart="264dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="Choose"
         app:layout_constraintBottom_toTopOf="@+id/BTNsignup"
+        app:layout_constraintEnd_toEndtOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/TVpic"
         android:layout_width="183dp"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Select your profile picture:"
         app:layout_constraintBottom_toTopOf="@+id/BTNsignup"
         app:layout_constraintEnd_toStartOf="@+id/BTNchooseImageSignUp"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.71"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="266dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETaboutme">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:baselineAligned="true"
+            android:text="@string/account_type" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/RBwise"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/Wise" />
+
+            <RadioButton
+                android:id="@+id/RByoung"
+                android:layout_width="88dp"
+                android:layout_height="match_parent"
+                android:text="@string/Young" />
+        </RadioGroup>
+    </LinearLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>

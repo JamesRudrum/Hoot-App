@@ -31,4 +31,6 @@
     <string name="subject">Subject:</string>
     <string name="message">Message:</string>
     <string name="send">send</string>
+    <string name="Wise">Wise</string>
+    <string name="Young">Young</string>
 </resources>
