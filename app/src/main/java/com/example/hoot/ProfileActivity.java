@@ -96,24 +96,24 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             private void getAllUserInterests(@NonNull DataSnapshot dataSnapshot, String accountType) {
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CardGames").exists())
-                    interestList.add("Card Games\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("BoardGames").exists())
                     interestList.add("Board Games\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Puzzles").exists())
-                    interestList.add("Puzzles\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Books").exists())
+                    interestList.add("Books\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CardGames").exists())
+                    interestList.add("Card Games\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CurrentAffairs").exists())
+                    interestList.add("Current Affairs\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Films").exists())
+                    interestList.add("Films\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Knitting").exists())
                     interestList.add("Knitting\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Music").exists())
                     interestList.add("Music\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Films").exists())
-                    interestList.add("Films\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CurrentAffairs").exists())
-                    interestList.add("Current Affairs\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Photography").exists())
                     interestList.add("Photography\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Books").exists())
-                    interestList.add("Books\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Puzzles").exists())
+                    interestList.add("Puzzles\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Sport").exists())
                     interestList.add("Sport\n");
             }
