@@ -9,7 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.RadioButton;
+
+import android.widget.ImageButton;
+
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -33,6 +37,7 @@ import java.util.UUID;
 public class signup extends AppCompatActivity {
 
     private Button BTNsignup;
+    private Button BTNsignin;
     private EditText ETemail;
     private EditText ETfirstname;
     private EditText ETpassword;
@@ -56,6 +61,7 @@ public class signup extends AppCompatActivity {
 
 
         BTNsignup = findViewById(R.id.BTNsignup);
+        BTNsignin = findViewById(R.id.BTNsignin);
         ETfirstname = findViewById( R.id.ETfirstname);
         ETemail = findViewById(R.id.ETemail);
         ETpassword = findViewById(R.id.ETpassword);
@@ -65,6 +71,14 @@ public class signup extends AppCompatActivity {
         storageReference = storage.getReference();
         RBwise = findViewById(R.id.RBwise);
         RByoung = findViewById(R.id.RByoung);
+
+        BTNsignin = findViewById(R.id.BTNsignin);
+        BTNsignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(signup.this, MainActivity.class));
+            }
+        });
 
 
         BTNchooseImageSignUp.setOnClickListener( new View.OnClickListener() {
