@@ -143,8 +143,8 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
                 TextView percentageMatchView = view.findViewById(R.id.feedPercentageMatch);
                 TextView matchView = view.findViewById(R.id.feedMatch);
-                matchView.setText("Number of interest matches :" + String.valueOf(calculateMatch(myInterests, theirInterests)));
-                percentageMatchView.setText("Percentage match :" + String.valueOf(calculatePercentageMatch(myInterests, theirInterests)) + "%");
+                matchView.setText("Number of interest matches: " + String.valueOf(calculateMatch(myInterests, theirInterests)));
+                percentageMatchView.setText("Percentage match: " + String.valueOf(calculatePercentageMatch(myInterests, theirInterests)) + "%");
             }
 
             @Override
@@ -165,7 +165,7 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         });
 
         nameView.setText(name);
-        aboutMeView.setText(aboutme);
+        aboutMeView.setText("About me: \n" + aboutme);
         GlideApp.with(ctx).load(image).into(imageView);
     }
 }
