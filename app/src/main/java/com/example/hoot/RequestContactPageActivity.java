@@ -8,9 +8,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,10 @@ public class RequestContactPageActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private TextView ETinteretsListRCPage;
     private List<String> interestList;
+    private ImageButton BTNProfileRCP;
+    private ImageButton BTNFeedRCP;
+    private ImageButton BTNLogoutRCP;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,34 @@ public class RequestContactPageActivity extends AppCompatActivity {
         TVwiseOrYoungRCPage = findViewById(R.id.TVwiseOrYoungRCPage);
         IVpictureRCPage = findViewById(R.id.IVpictureRCPage);
         ETinteretsListRCPage = findViewById(R.id.ETinteretsListRCPage);
+        mAuth = FirebaseAuth.getInstance();
+
+
+        BTNProfileRCP = findViewById(R.id.BTNProfileRCP);
+        BTNProfileRCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RequestContactPageActivity.this, ProfileActivity.class));
+            }
+        });
+
+        BTNFeedRCP = findViewById(R.id.BTNFeedRCP);
+        BTNFeedRCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RequestContactPageActivity.this, FeedActivity.class));
+
+            }
+        });
+
+        BTNLogoutRCP = findViewById(R.id.BTNLogoutRCP);
+        BTNLogoutRCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(RequestContactPageActivity.this, MainActivity.class));
+            }
+        });
 
         if (getIntent().hasExtra("userid")) {
             String userid = getIntent().getStringExtra("userid");
