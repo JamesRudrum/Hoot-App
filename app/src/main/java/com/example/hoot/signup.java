@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import java.util.UUID;
 public class signup extends AppCompatActivity {
 
     private Button BTNsignup;
+    private Button BTNsignin;
     private EditText ETemail;
     private EditText ETfirstname;
     private EditText ETpassword;
@@ -60,6 +62,7 @@ public class signup extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 
         BTNsignup = findViewById(R.id.BTNsignup);
+        BTNsignin = findViewById(R.id.BTNsignin);
         ETfirstname = findViewById( R.id.ETfirstname);
         ETemail = findViewById(R.id.ETemail);
         ETpassword = findViewById(R.id.ETpassword);
@@ -68,6 +71,14 @@ public class signup extends AppCompatActivity {
         BTNchooseImageSignUp = findViewById(R.id.BTNchooseImageSignUp);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        BTNsignin = findViewById(R.id.BTNsignin);
+        BTNsignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(signup.this, MainActivity.class));
+            }
+        });
 
 
         BTNchooseImageSignUp.setOnClickListener( new View.OnClickListener() {
