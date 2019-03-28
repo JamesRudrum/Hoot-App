@@ -17,9 +17,10 @@
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:padding="16dp"
         android:text="@string/subject"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -31,9 +32,10 @@
         android:importantForAutofill="no" />
 
     <TextView
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:padding="16dp"
         android:text="@string/message"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
