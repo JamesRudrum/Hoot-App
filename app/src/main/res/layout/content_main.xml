@@ -65,6 +65,8 @@
         tools:layout_editor_absoluteX="0dp">
 
         <Button
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNsignuplink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
