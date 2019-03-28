@@ -49,11 +49,14 @@
         android:importantForAutofill="no" />
 
     <Button
-        android:padding="16dp"
-        android:background="@color/colorPrimary"
         android:id="@+id/BTsend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/send" />
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/open_sans_bold"
+        android:padding="16dp"
+        android:text="@string/send"
+        android:textColor="@color/colorPrimaryDark"
+        android:tint="@color/colorPrimaryDark" />
 
 </LinearLayout>

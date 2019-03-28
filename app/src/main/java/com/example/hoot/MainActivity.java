@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText ETLoginEmail;
     private EditText ETLoginPassword;
     private FirebaseAuth mAuth;
-
 
 
     @Override
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, signup.class));
+
             }
         });
 
