@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Hoot!</string>
     <string name="elliot">Elliot</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Hoot!</string>
     <string name="sign_up">Sign Up</string>
     <string name="email">Email</string>
-    <string name="title_activity_signup">signup</string>
+    <string name="title_activity_signup">sign up</string>
     <string name="about_you">About You</string>
-    <string name="signup">Signup</string>
+    <string name="signup">Sign up</string>
     <string name="password">Password</string>
     <string name="wise">Wise</string>
     <string name="account_type">Account type</string>
