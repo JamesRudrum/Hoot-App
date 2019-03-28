@@ -1,10 +1,13 @@
 package com.example.hoot;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private TextView TVinterestsListProfilePage;
     private List<String> interestList;
+    private Button BTNsignout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,16 @@ public class ProfileActivity extends AppCompatActivity {
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
+        BTNsignout = findViewById(R.id.BTNsignout);
+
+        BTNsignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+
+            }
+        });
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             FirebaseUser user = mAuth.getCurrentUser();
