@@ -110,24 +110,24 @@ public class RequestContactPageActivity extends AppCompatActivity {
                     }
                 }
                 private void getAllUserInterests(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("Interests").child("CardGames").exists())
-                        interestList.add("Card Games\n");
                     if (dataSnapshot.child("Interests").child("BoardGames").exists())
                         interestList.add("Board Games\n");
-                    if (dataSnapshot.child("Interests").child("Puzzles").exists())
-                        interestList.add("Puzzles\n");
+                    if (dataSnapshot.child("Interests").child("Books").exists())
+                        interestList.add("Books\n");
+                    if (dataSnapshot.child("Interests").child("CardGames").exists())
+                        interestList.add("Card Games\n");
+                    if (dataSnapshot.child("Interests").child("CurrentAffairs").exists())
+                        interestList.add("Current Affairs\n");
+                    if (dataSnapshot.child("Interests").child("Films").exists())
+                        interestList.add("Films\n");
                     if (dataSnapshot.child("Interests").child("Knitting").exists())
                         interestList.add("Knitting\n");
                     if (dataSnapshot.child("Interests").child("Music").exists())
                         interestList.add("Music\n");
-                    if (dataSnapshot.child("Interests").child("Films").exists())
-                        interestList.add("Films\n");
-                    if (dataSnapshot.child("Interests").child("CurrentAffairs").exists())
-                        interestList.add("Current Affairs\n");
                     if (dataSnapshot.child("Interests").child("Photography").exists())
                         interestList.add("Photography\n");
-                    if (dataSnapshot.child("Interests").child("Books").exists())
-                        interestList.add("Books\n");
+                    if (dataSnapshot.child("Interests").child("Puzzles").exists())
+                        interestList.add("Puzzles\n");
                     if (dataSnapshot.child("Interests").child("Sport").exists())
                         interestList.add("Sport\n");
                 }

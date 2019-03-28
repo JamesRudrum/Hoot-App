@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton BTNProfileProfile;
     private ImageButton BTNFeedProfile;
     private ImageButton BTNLogoutProfile;
+    private Button BTNsignout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,16 @@ public class ProfileActivity extends AppCompatActivity {
         TVprofilePageName = findViewById(R.id.TVprofilePageName);
         TVAboutMeProfile = findViewById(R.id.TVAboutMeProfile);
         TVinterestsListProfilePage = findViewById(R.id.TVinterestsListProfilePage);
+        BTNsignout = findViewById(R.id.BTNsignout);
+
+        BTNsignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+
+            }
+        });
 
         BTNProfileProfile = findViewById(R.id.BTNProfileProfile);
         BTNProfileProfile.setOnClickListener(new View.OnClickListener() {
@@ -128,24 +140,24 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             private void getAllUserInterests(@NonNull DataSnapshot dataSnapshot, String accountType) {
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CardGames").exists())
-                    interestList.add("Card Games\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("BoardGames").exists())
                     interestList.add("Board Games\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Puzzles").exists())
-                    interestList.add("Puzzles\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Books").exists())
+                    interestList.add("Books\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CardGames").exists())
+                    interestList.add("Card Games\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CurrentAffairs").exists())
+                    interestList.add("Current Affairs\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Films").exists())
+                    interestList.add("Films\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Knitting").exists())
                     interestList.add("Knitting\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Music").exists())
                     interestList.add("Music\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Films").exists())
-                    interestList.add("Films\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("CurrentAffairs").exists())
-                    interestList.add("Current Affairs\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Photography").exists())
                     interestList.add("Photography\n");
-                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Books").exists())
-                    interestList.add("Books\n");
+                if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Puzzles").exists())
+                    interestList.add("Puzzles\n");
                 if (dataSnapshot.child(accountType).child(user.getUid()).child("Interests").child("Sport").exists())
                     interestList.add("Sport\n");
             }

@@ -8,7 +8,6 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-
     <EditText
         android:id="@+id/ETLoginEmail"
         android:layout_width="wrap_content"
