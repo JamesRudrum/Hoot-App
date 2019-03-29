@@ -19,7 +19,7 @@
 
         <Button
             android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNsignin"
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
 
     <Button
         android:id="@+id/BTNsignup"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
         android:textColor="@color/colorPrimaryDark"
         android:tint="@color/colorPrimaryDark"
         android:layout_width="87dp"
@@ -118,7 +118,7 @@
 
     <Button
         android:id="@+id/BTNchooseImageSignUp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
         android:textColor="@color/colorPrimaryDark"
         android:tint="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
