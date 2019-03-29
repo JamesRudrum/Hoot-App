@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,7 +66,7 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         TextView nameView = view.findViewById(R.id.feedName);
         TextView aboutMeView = view.findViewById(R.id.feedAboutMe);
         ImageView imageView = view.findViewById(R.id.feedProfileImage);
-        Button BTNViewProfile = view.findViewById(R.id.BTNViewProfile);
+        final Button BTNViewProfile = view.findViewById(R.id.BTNViewProfile);
 
         final DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("users/");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -157,6 +159,8 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         BTNViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(ctx,R.anim.fadein);
+                BTNViewProfile.startAnimation(animation);
                 Intent intent = new Intent(ctx, RequestContactPageActivity.class);
                 intent.putExtra("userid", userid);
                 intent.putExtra("wiseoryoung", wiseoryoung);

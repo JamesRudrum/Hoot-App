@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -91,6 +93,8 @@ public class signup extends AppCompatActivity {
         BTNchooseImageSignUp.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(signup.this,R.anim.fadein);
+                BTNchooseImageSignUp.startAnimation(animation);
                 chooseImage();
             }
         });
@@ -98,6 +102,8 @@ public class signup extends AppCompatActivity {
         BTNsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(signup.this,R.anim.fadein);
+                BTNsignup.startAnimation(animation);
                 mAuth = FirebaseAuth.getInstance();
 
                 mAuth.createUserWithEmailAndPassword(ETemail.getText().toString(), ETpassword.getText().toString())
