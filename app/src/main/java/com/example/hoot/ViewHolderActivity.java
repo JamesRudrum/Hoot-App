@@ -64,6 +64,7 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
     public void setDetails(final Context ctx, String name, String aboutme, String image, final String userid, final String wiseoryoung){
         TextView nameView = view.findViewById(R.id.feedName);
+        TextView aboutMeViewTitle = view.findViewById(R.id.feedAboutMeTitle);
         TextView aboutMeView = view.findViewById(R.id.feedAboutMe);
         ImageView imageView = view.findViewById(R.id.feedProfileImage);
         final Button BTNViewProfile = view.findViewById(R.id.BTNViewProfile);
@@ -169,7 +170,8 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         });
 
         nameView.setText(name);
-        aboutMeView.setText("About me: \n" + aboutme);
+        aboutMeViewTitle.setText("About me:");
+        aboutMeView.setText(aboutme);
         GlideApp.with(ctx).load(image).into(imageView);
     }
 }

@@ -32,6 +32,15 @@
             android:layout_marginTop="8dp" />
 
         <TextView
+            android:id="@+id/feedAboutMeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/about_me"
+            android:textSize="20sp" />
+
+        <TextView
             android:id="@+id/feedAboutMe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,9 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/percent"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/percent"
             android:textSize="20sp" />
 
         <TextView
@@ -56,9 +65,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/match"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/match"
             android:textSize="20sp" />
 
         <Button
