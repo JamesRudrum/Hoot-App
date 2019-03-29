@@ -8,6 +8,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,6 +60,8 @@ public class RequestContactPageActivity extends AppCompatActivity {
         BTNProfileRCP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(RequestContactPageActivity.this,R.anim.fadein);
+                BTNProfileRCP.startAnimation(animation);
                 startActivity(new Intent(RequestContactPageActivity.this, ProfileActivity.class));
             }
         });
@@ -66,6 +70,8 @@ public class RequestContactPageActivity extends AppCompatActivity {
         BTNFeedRCP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(RequestContactPageActivity.this,R.anim.fadein);
+                BTNFeedRCP.startAnimation(animation);
                 startActivity(new Intent(RequestContactPageActivity.this, FeedActivity.class));
 
             }
@@ -75,6 +81,8 @@ public class RequestContactPageActivity extends AppCompatActivity {
         BTNLogoutRCP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(RequestContactPageActivity.this,R.anim.fadein);
+                BTNLogoutRCP.startAnimation(animation);
                 mAuth.signOut();
                 startActivity(new Intent(RequestContactPageActivity.this, MainActivity.class));
             }

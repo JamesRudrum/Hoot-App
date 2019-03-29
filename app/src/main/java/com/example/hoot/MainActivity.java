@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         BTNsignuplink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadein);
+                BTNsignuplink.startAnimation(animation);
                 startActivity(new Intent(MainActivity.this, signup.class));
 
             }
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         BTNsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadein);
+                BTNsignin.startAnimation(animation);
                 mAuth =  FirebaseAuth.getInstance();
                 mAuth.signInWithEmailAndPassword(ETLoginEmail.getText().toString(), ETLoginPassword.getText().toString())
                     .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {

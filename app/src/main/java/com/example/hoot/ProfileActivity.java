@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -59,6 +61,8 @@ public class ProfileActivity extends AppCompatActivity {
         BTNProfileProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(ProfileActivity.this,R.anim.fadein);
+                BTNProfileProfile.startAnimation(animation);
                 startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
             }
         });
@@ -67,6 +71,8 @@ public class ProfileActivity extends AppCompatActivity {
         BTNFeedProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(ProfileActivity.this,R.anim.fadein);
+                BTNFeedProfile.startAnimation(animation);
                 startActivity(new Intent(ProfileActivity.this, FeedActivity.class));
 
             }
@@ -76,6 +82,8 @@ public class ProfileActivity extends AppCompatActivity {
         BTNLogoutProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(ProfileActivity.this,R.anim.fadein);
+                BTNLogoutProfile.startAnimation(animation);
                 mAuth.signOut();
                 startActivity(new Intent(ProfileActivity.this, MainActivity.class));
             }

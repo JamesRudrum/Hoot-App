@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
 
@@ -45,6 +47,8 @@ public class FeedActivity extends AppCompatActivity {
         BTNProfileFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(FeedActivity.this,R.anim.fadein);
+                BTNProfileFeed.startAnimation(animation);
                 startActivity(new Intent(FeedActivity.this, ProfileActivity.class));
             }
         });
@@ -53,6 +57,8 @@ public class FeedActivity extends AppCompatActivity {
                 BTNFeedFeed.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Animation animation= AnimationUtils.loadAnimation(FeedActivity.this,R.anim.fadein);
+                        BTNFeedFeed.startAnimation(animation);
                         startActivity(new Intent(FeedActivity.this, FeedActivity.class));
 
                     }
@@ -62,6 +68,8 @@ public class FeedActivity extends AppCompatActivity {
         BTNLogoutFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(FeedActivity.this,R.anim.fadein);
+                BTNLogoutFeed.startAnimation(animation);
             mAuth.signOut();
             startActivity(new Intent(FeedActivity.this, MainActivity.class));
             }

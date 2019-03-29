@@ -52,7 +52,7 @@
         android:id="@+id/BTsend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
         android:fontFamily="@font/open_sans_bold"
         android:padding="16dp"
         android:text="@string/send"

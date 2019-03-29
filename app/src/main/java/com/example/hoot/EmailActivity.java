@@ -9,6 +9,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,10 +38,12 @@ public class EmailActivity extends AppCompatActivity {
         mEditTextSubject = findViewById(R.id.ETemail_subject);
         mEditTextMessage = findViewById(R.id.ETemail_message);
 
-        Button buttonSend = findViewById(R.id.BTsend);
+        final Button buttonSend = findViewById(R.id.BTsend);
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation= AnimationUtils.loadAnimation(EmailActivity.this,R.anim.fadein);
+                buttonSend.startAnimation(animation);
                 sendMail();
             }
         });

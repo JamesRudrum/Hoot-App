@@ -43,7 +43,7 @@
 
     <Button
         android:id="@+id/BTNsignin"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
         android:textColor="@color/colorPrimaryDark"
         android:tint="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <Button
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNsignuplink"
             android:layout_width="wrap_content"
