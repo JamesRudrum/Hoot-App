@@ -1,76 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".RequestContactPageActivity"
     tools:showIn="@layout/activity_requestcontactpage">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarRCPage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        tools:layout_editor_absoluteX="0dp"
-        android:label="@string/app_name" >
-
-
-        <ImageButton
-            android:tint="@color/colorPrimaryDark"
-            android:background="@drawable/buttonstyle"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/BTNProfileRCP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            app:srcCompat="@drawable/ic_person_black_24dp" />
-
-        <ImageButton
-            android:tint="@color/colorPrimaryDark"
-            android:background="@drawable/buttonstyle"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/BTNFeedRCP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_people_black_24dp" />
-
-        <ImageButton
-            android:tint="@color/colorPrimaryDark"
-            android:background="@drawable/buttonstyle"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/BTNLogoutRCP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-
-            android:layout_gravity="end"
-            app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
-    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:id="@+id/IVpictureRCPage"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
+        android:padding="16dp"
         android:contentDescription="@string/profileavatarrcpage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarRCPage"
         tools:srcCompat="@tools:sample/avatars[3]" />
 
     <TextView
         android:id="@+id/TVprofileNameRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:padding="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/textview"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,10 +39,10 @@
         android:id="@+id/TVwiseOrYoungRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:padding="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/textview"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,10 +52,10 @@
         android:id="@+id/TVaboutMeTitleRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:padding="8dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/about_me"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVwiseOrYoungRCPage" />
@@ -105,7 +64,7 @@
         android:id="@+id/TVAboutMeRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:padding="8dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/textview"
         android:textSize="18sp"
@@ -117,27 +76,25 @@
         android:id="@+id/TVTheirInterests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:padding="8dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/my_interests"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/ETinteretsListRCPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TVAboutMeRCPage" />
 
-
     <TextView
         android:id="@+id/ETinteretsListRCPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:padding="8dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
-        android:textSize="14sp"
+        android:fontFamily="@font/open_sans"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVTheirInterests" />
@@ -156,3 +113,4 @@
         app:srcCompat="@android:drawable/sym_action_chat" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
