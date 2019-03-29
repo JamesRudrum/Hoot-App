@@ -161,7 +161,7 @@
 
         <Button
             android:id="@+id/BTNinterestsSubmit"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:tint="@color/colorPrimaryDark"
             android:layout_width="wrap_content"

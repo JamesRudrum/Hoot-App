@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonstyle"
             android:cropToPadding="true"
             android:textColor="@color/colorPrimaryDark"
             android:tint="@color/colorPrimaryDark"
@@ -29,7 +29,7 @@
 
         ><ImageButton
             android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNFeedFeed"
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
 
         ><ImageButton
             android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNLogoutFeed"
             android:layout_width="wrap_content"

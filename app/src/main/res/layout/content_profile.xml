@@ -17,7 +17,7 @@
 
         ><ImageButton
             android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNProfileProfile"
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
 
         ><ImageButton
             android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNFeedProfile"
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
 
         ><ImageButton
             android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonstyle"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/BTNLogoutProfile"
             android:layout_width="wrap_content"
