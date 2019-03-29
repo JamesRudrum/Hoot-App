@@ -53,5 +53,6 @@
     <string name="sport">Sport</string>
     <string name="submit">Submit</string>
     <string name="profile_picture">Profile picture</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>
