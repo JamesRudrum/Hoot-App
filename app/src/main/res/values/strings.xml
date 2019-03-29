@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Hoot!</string>
+    <string name="elliot">Elliot</string>
+    <string name="title_activity_main">Hoot!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="title_activity_signup">sign up</string>
+    <string name="about_you">About You</string>
+    <string name="signup">Sign up</string>
+    <string name="password">Password</string>
+    <string name="wise">Wise</string>
+    <string name="account_type">Account type</string>
+    <string name="first_name">First Name</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="about_me">About Me</string>
+    <string name="title_activity_feed">FeedActivity</string>
+    <string name="feed">Feed</string>
+    <string name="title_activity_interests">InterestsActivity</string>
+    <string name="select_interests">Select interests</string>
+    <string name="profile_title">Profile</string>
+    <string name="name">Name</string>
+    <string name="to_do">To do</string>
+    <string name="view_profile">View profile</string>
+    <string name="title_activity_requestcontactpage">requestcontactpage</string>
+    <string name="title_activity_chat2">Chat2Activity</string>
+    <string name="textview">TextView</string>
+    <string name="profileavatarrcpage">ProfileAvatarRCPage</string>
+    <string name="percent">percent</string>
+    <string name="match">match</string>
+    <string name="title_activity_email">EmailActivity</string>
+    <string name="subject">Subject:</string>
+    <string name="message">Message:</string>
+    <string name="send">send</string>
+
+    <string name="Wise">Wise</string>
+    <string name="Young">Young</string>
+
+    <string name="profileavatarprofilepage">profileAvatarProfilePage</string>
+    <string name="my_interests">My Interests</string>
+    <string name="login">Login</string>
+    <string name="interests_n">Interests</string>
+    <string name="choose">Choose</string>
+    <string name="select_your_profile_picture">Select your profile picture:</string>
+    <string name="board_games">Board Games</string>
+    <string name="books">Books</string>
+    <string name="card_games">Card Games</string>
+    <string name="current_affairs">Current Affairs</string>
+    <string name="films">Films</string>
+    <string name="knitting">Knitting</string>
+    <string name="music">Music</string>
+    <string name="photography">Photography</string>
+    <string name="puzzles">Puzzles</string>
+    <string name="sport">Sport</string>
+    <string name="submit">Submit</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+</resources>

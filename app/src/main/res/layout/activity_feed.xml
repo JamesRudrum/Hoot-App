@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+
+        >
+
+        <ImageButton
+            android:id="@+id/BTNProfileFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@drawable/buttonstyle"
+            android:cropToPadding="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+        ><ImageButton
+            android:tint="@color/colorPrimaryDark"
+        android:background="@drawable/buttonstyle"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/BTNFeedFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_people_black_24dp" />
+
+        ><ImageButton
+            android:tint="@color/colorPrimaryDark"
+        android:background="@drawable/buttonstyle"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/BTNLogoutFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
