@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "678315169946",
+    "firebase_url": "https://hoot-app-testing.firebaseio.com",
+    "project_id": "hoot-app-testing",
+    "storage_bucket": "hoot-app-testing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678315169946:android:3a42a9181e8de24d",
+        "android_client_info": {
+          "package_name": "com.example.hoot.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsbnecRXWrtEHVWMMj9n7bDx-tRoHwBZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678315169946-a5s1lg56av940g3gpufoi6hj41340o5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
