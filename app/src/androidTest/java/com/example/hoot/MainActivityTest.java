@@ -42,14 +42,14 @@ public class MainActivityTest {
     @Test
     public void userCanPressSignUpLink() {
         onView(withId(R.id.BTNsignuplink)).perform(click());
-        onView(withId(R.id.TVpic)).check(matches(withText("Select your profile picture:")));
+        onView(withId(R.id.TVpic)).check(matches(withText("Profile picture")));
         onView(withId(R.id.ETpassword)).check(matches(withHint("Password")));
     }
 
     @Test
     public void userCanLogin() {
-        onView(withId(R.id.ETLoginEmail)).perform(typeText("test@test.com"));
-        onView(withId(R.id.ETLoginPassword)).perform(typeText("password123"));
+        onView(withId(R.id.ETLoginEmail)).perform(typeText("elliot.jennings66@googlemail.com"));
+        onView(withId(R.id.ETLoginPassword)).perform(typeText("elliot1"));
         onView(withId(R.id.BTNsignin)).check(matches(isDisplayed())).perform(click());
         SystemClock.sleep(5000);
         onView(withId(R.id.BTNViewProfile)).check(matches(isDisplayed()));

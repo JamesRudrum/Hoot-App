@@ -38,6 +38,68 @@ public class InterestsActivityTest {
             new IntentsTestRule<>(signup.class);
 
     @Test
+    public void youngUserSubmitSignUpDetailsAndSelectedInterestsAppearOnProfiles() {
+        onView(withId(R.id.ETfirstname)).perform(typeText("Brooke"));
+        onView(withId(R.id.ETemail)).perform(typeText("queenbrooke@test.com"));
+        onView(withId(R.id.ETpassword)).perform(typeText("password123"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.ETaboutme)).perform(typeText("I am the queen of everything"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.RByoung)).perform(click());
+        Intent resultData = new Intent();
+        intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
+                hasType(is("image/*"))));
+        onView(withId(R.id.BTNsignup)).perform(click());
+        SystemClock.sleep(8000);
+        onView(withId(R.id.RBPhotography)).perform(click());
+        onView(withId(R.id.RBPhotography)).check(matches(isChecked()));
+        onView(withId(R.id.RBSport)).perform(click());
+        onView(withId(R.id.RBSport)).check(matches(isChecked()));
+        onView(withId(R.id.RBBooks)).perform(click());
+        onView(withId(R.id.RBBooks)).check(matches(isChecked()));
+        onView(withId(R.id.BTNinterestsSubmit)).perform(click());
+        SystemClock.sleep(5000);
+        onView(withId(R.id.TVinterestsListProfilePage)).check(matches(withText(containsString("Books\nPhotography\nSport\n"))));
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
+        user.delete();
+    }
+
+    @Test
+    public void wiseUserSubmitSignUpDetailsAndSelectedInterestsAppearOnProfile() {
+        onView(withId(R.id.ETfirstname)).perform(typeText("Erin"));
+        onView(withId(R.id.ETemail)).perform(typeText("queenerin@test.com"));
+        onView(withId(R.id.ETpassword)).perform(typeText("password123"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.ETaboutme)).perform(typeText("I am also the queen of everything"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.RBwise)).perform(click());
+        Intent resultData = new Intent();
+        intending(allOf(hasAction(equalTo(Intent.ACTION_GET_CONTENT)),
+                hasType(is("image/*"))));
+        onView(withId(R.id.BTNsignup)).perform(click());
+        SystemClock.sleep(8000);
+        onView(withId(R.id.RBBoardGames)).perform(click());
+        onView(withId(R.id.RBBoardGames)).check(matches(isChecked()));
+        onView(withId(R.id.RBPuzzles)).perform(click());
+        onView(withId(R.id.RBPuzzles)).check(matches(isChecked()));
+        onView(withId(R.id.RBMusic)).perform(click());
+        onView(withId(R.id.RBMusic)).check(matches(isChecked()));
+        onView(withId(R.id.RBFilms)).perform(click());
+        onView(withId(R.id.RBFilms)).check(matches(isChecked()));
+        onView(withId(R.id.RBCardGames)).perform(click());
+        onView(withId(R.id.RBCardGames)).check(matches(isChecked()));
+        onView(withId(R.id.BTNinterestsSubmit)).perform(click());
+        onView(withId(R.id.TVinterestsListProfilePage)).check(matches(withText(containsString("Board Games\nCard Games\nFilms\nMusic\nPuzzles\n"))));
+        SystemClock.sleep(5000);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
+        user.delete();
+    }
+
+    @Test
     public void youngUserTakesYouToInterestsActivityandChecksAllInterests() {
         onView(withId(R.id.ETfirstname)).perform(typeText("Bob"));
         onView(withId(R.id.ETemail)).perform(typeText("bob@bob.com"));
@@ -78,11 +140,9 @@ public class InterestsActivityTest {
         onView(withId(R.id.TVAboutMeProfile)).check(matches(withText(containsString("Bob's here"))));
         onView(withId(R.id.TVMyInterests)).check(matches(withText(containsString("My Interests"))));
         onView(withId(R.id.TVinterestsListProfilePage)).check(matches(withText(containsString("Board Games\nBooks\nCard Games\nCurrent Affairs\nFilms\nKnitting\nMusic\nPhotography\nPuzzles\nSport\n"))));
-
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         assert user != null;
         user.delete();
-
     }
 }
