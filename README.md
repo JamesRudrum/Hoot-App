@@ -33,6 +33,12 @@ so I can see who I want to connect with
 I want to see a feed of opposite users
 ```
 
+```
+As a user
+So I can get incontact with someone
+I want to be able to send them an email directly from their profile page
+```
+
 # Technologies
 
 - Java - Android Studios IDE
