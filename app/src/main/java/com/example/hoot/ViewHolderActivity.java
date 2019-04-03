@@ -24,38 +24,9 @@ import java.util.List;
 public class ViewHolderActivity extends RecyclerView.ViewHolder {
 
     View view;
-    public List<String> theirInterests;
-    public List<String> myInterests;
-    public Float percentageMatch;
-
-    public int calculateMatch(List myInterests, List theirInterests) {
-         int numberMatchedInterests = 0;
-        for (int i = 0; i < myInterests.size(); i++) {
-            for (int x = 0; x < theirInterests.size(); x++) {
-                if (x == i) {
-                    numberMatchedInterests += 1;
-                }
-            }
-        }
-        return numberMatchedInterests;
-    }
-
-    public int calculatePercentageMatch(List myInterests, List theirInterests) {
-        int numberMatchedInterests = 0;
-        System.out.println(myInterests.size());
-        System.out.println(theirInterests.size());
-        for (int i = 0; i < myInterests.size(); i++) {
-            for (int x = 0; x < theirInterests.size(); x++) {
-                if (x == i) {
-                    numberMatchedInterests += 1;
-                }
-            }
-        }
-        float matches = (float) numberMatchedInterests;
-        percentageMatch = (matches / myInterests.size()) * 100;
-        return Math.round(percentageMatch);
-    }
-
+    private List<String> theirInterests;
+    private List<String> myInterests;
+    private InterestsAlgorithm algorithm;
 
     public ViewHolderActivity(View itemView) {
         super(itemView);
@@ -74,80 +45,10 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 myInterests = new ArrayList<>();
-                if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).exists()) {
-
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CardGames").exists())
-                        myInterests.add("Card Games");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("BoardGames").exists())
-                        myInterests.add("Board Games");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Puzzles").exists())
-                        myInterests.add("Puzzles");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Knitting").exists())
-                        myInterests.add("Knitting");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Music").exists())
-                        myInterests.add("Music");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Films").exists())
-                        myInterests.add("Film");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CurrentAffairs").exists())
-                        myInterests.add("Current Affairs");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Photography").exists())
-                        myInterests.add("Photography");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Books").exists())
-                        myInterests.add("Books");
-                    if (dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Sport").exists())
-                        myInterests.add("Sport");
-                } else {
-
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CardGames").exists())
-                        myInterests.add("Card Games");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("BoardGames").exists())
-                        myInterests.add("Board Games");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Puzzles").exists())
-                        myInterests.add("Puzzles");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Knitting").exists())
-                        myInterests.add("Knitting");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Music").exists())
-                        myInterests.add("Music");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Films").exists())
-                        myInterests.add("Film");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CurrentAffairs").exists())
-                        myInterests.add("Current Affairs");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Photography").exists())
-                        myInterests.add("Photography");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Books").exists())
-                        myInterests.add("Books");
-                    if (dataSnapshot.child("Wise").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Sport").exists())
-                        myInterests.add("Sport");
-
-                }
                 theirInterests = new ArrayList<>();
-                System.out.println(dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Films"));
-
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("CardGames").exists())
-                    theirInterests.add("Card Games");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("BoardGames").exists())
-                    theirInterests.add("Board Games");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Puzzles").exists())
-                    theirInterests.add("Puzzles");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Knitting").exists())
-                    theirInterests.add("Knitting");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Music").exists())
-                    theirInterests.add("Music");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Films").exists())
-                    theirInterests.add("Film");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("CurrentAffairs").exists())
-                    theirInterests.add("Current Affairs");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Photography").exists())
-                    theirInterests.add("Photography");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Books").exists())
-                    theirInterests.add("Books");
-                if (dataSnapshot.child(wiseoryoung).child(userid).child("Interests").child("Sport").exists())
-                    theirInterests.add("Sport");
-
-                TextView percentageMatchView = view.findViewById(R.id.feedPercentageMatch);
-                TextView matchView = view.findViewById(R.id.feedMatch);
-                matchView.setText("Number of interest matches: " + String.valueOf(calculateMatch(myInterests, theirInterests)));
-                percentageMatchView.setText("Percentage match: " + String.valueOf(calculatePercentageMatch(myInterests, theirInterests)) + "%");
+                getCurrentUserInterests(dataSnapshot);
+                getOppositeUserInterests(dataSnapshot, wiseoryoung, userid, theirInterests);
+                displayInterestMatchDetails();
             }
 
             @Override
@@ -173,5 +74,74 @@ public class ViewHolderActivity extends RecyclerView.ViewHolder {
         aboutMeViewTitle.setText("About me:");
         aboutMeView.setText(aboutme);
         GlideApp.with(ctx).load(image).into(imageView);
+    }
+
+    private void displayInterestMatchDetails() {
+        TextView percentageMatchView = view.findViewById(R.id.feedPercentageMatch);
+        TextView matchView = view.findViewById(R.id.feedMatch);
+        algorithm = new InterestsAlgorithm();
+        String matches = "Number of interest matches: " + String.valueOf(algorithm.calculateMatch(myInterests, theirInterests));
+        String percentage = "Percentage match: " + String.valueOf(algorithm.calculatePercentageMatch(myInterests, theirInterests)) + "%";
+        matchView.setText(matches);
+        percentageMatchView.setText(percentage);
+    }
+
+    private void getCurrentUserInterests(DataSnapshot dataSnapshot) {
+        if (currentUserIsYoung(dataSnapshot)) {
+            getCurrentUsersInterests(dataSnapshot, "Young", myInterests);
+        } else {
+            getCurrentUsersInterests(dataSnapshot, "Wise", myInterests);
+
+        }
+    }
+
+    private boolean currentUserIsYoung(DataSnapshot dataSnapshot) {
+        return dataSnapshot.child("Young").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).exists();
+    }
+
+    private void getOppositeUserInterests(DataSnapshot dataSnapshot, String accountType, String userid, List<String> theirInterests) {
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("CardGames").exists())
+            theirInterests.add("Card Games");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("BoardGames").exists())
+            theirInterests.add("Board Games");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Puzzles").exists())
+            theirInterests.add("Puzzles");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Knitting").exists())
+            theirInterests.add("Knitting");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Music").exists())
+            theirInterests.add("Music");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Films").exists())
+            theirInterests.add("Film");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("CurrentAffairs").exists())
+            theirInterests.add("Current Affairs");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Photography").exists())
+            theirInterests.add("Photography");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Books").exists())
+            theirInterests.add("Books");
+        if (dataSnapshot.child(accountType).child(userid).child("Interests").child("Sport").exists())
+            theirInterests.add("Sport");
+    }
+
+    private void getCurrentUsersInterests(DataSnapshot dataSnapshot, String accountType, List<String> myInterests) {
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CardGames").exists())
+            myInterests.add("Card Games");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("BoardGames").exists())
+            myInterests.add("Board Games");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Puzzles").exists())
+            myInterests.add("Puzzles");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Knitting").exists())
+            myInterests.add("Knitting");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Music").exists())
+            myInterests.add("Music");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Films").exists())
+            myInterests.add("Film");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("CurrentAffairs").exists())
+            myInterests.add("Current Affairs");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Photography").exists())
+            myInterests.add("Photography");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Books").exists())
+            myInterests.add("Books");
+        if (dataSnapshot.child(accountType).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Interests").child("Sport").exists())
+            myInterests.add("Sport");
     }
 }
