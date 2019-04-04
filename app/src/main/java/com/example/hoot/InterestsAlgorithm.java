@@ -6,7 +6,7 @@ public class InterestsAlgorithm {
 
     private float percentageMatch;
 
-    public float calculatePercentageMatch(List myInterests, List theirInterests) {
+    public int calculatePercentageMatch(List myInterests, List theirInterests) {
         int numberOfMatchedInterests = calculateMatch(myInterests, theirInterests);
         float matches = (float) numberOfMatchedInterests;
         percentageMatch = (matches / myInterests.size()) * 100;
